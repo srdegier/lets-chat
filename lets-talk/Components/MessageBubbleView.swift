@@ -23,19 +23,16 @@ class MessageBubbleView: UIView {
     @IBOutlet weak var messageTextLabel: UILabel!
     @IBOutlet weak var textBubbleView: UIView!
     
-    private var _messageType: MessageType = .sender
+    // MARK: - Properties
     
+    private var _messageType: MessageType = .sender
+
     @IBInspectable public var messageType: Int {
         get { _messageType.rawValue }
         set {
             _messageType = MessageType(rawValue: newValue) ?? .sender
             self.updateView()
         }
-    }
-    
-    // Helper function to convert from MessageType to Int
-    private func messageTypeToInt(_ type: MessageType) -> Int {
-        return type.rawValue
     }
     
     private var _isChatMode: Bool = true
@@ -58,7 +55,8 @@ class MessageBubbleView: UIView {
         }
     }
     
-    // Laden vanuit XIB-bestand
+    // MARK: - Initializers
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -69,13 +67,22 @@ class MessageBubbleView: UIView {
         setupView()
     }
     
-    // Configureer de subviews en layout constraints
+    func loadViewFromNib() -> UIView {
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: "MessageBubbleView", bundle: bundle)
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
+        self.updateView()
+        return view
+    }
+    
     func setupView() {
         let view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
     }
+    
+    // MARK: - Layout
     
     private func updateView() {
         switch messageType {
@@ -104,14 +111,7 @@ class MessageBubbleView: UIView {
         }
     }
     
-    // Laad de view vanuit XIB-bestand
-    func loadViewFromNib() -> UIView {
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "MessageBubbleView", bundle: bundle)
-        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        self.updateView()
-        return view
-    }
+    // MARK: - Methods
     
     private func changeImage(_ name: String) {
         guard let image = UIImage(named: name) else { return }
@@ -120,6 +120,11 @@ class MessageBubbleView: UIView {
                                 UIEdgeInsets(top: 17, left: 21, bottom: 17, right: 21),
                                     resizingMode: .stretch)
             .withRenderingMode(.alwaysTemplate)
+    }
+    
+    // Helper function to convert from MessageType to Int
+    private func messageTypeToInt(_ type: MessageType) -> Int {
+        return type.rawValue
     }
         
 }
