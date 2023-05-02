@@ -31,7 +31,6 @@ class MessageBubbleView: UIView {
         get { _messageType.rawValue }
         set {
             _messageType = MessageType(rawValue: newValue) ?? .sender
-            self.updateView()
         }
     }
     
@@ -41,7 +40,6 @@ class MessageBubbleView: UIView {
         get { _isChatMode }
         set {
             _isChatMode = newValue
-            self.updateView()
         }
     }
     
@@ -67,11 +65,15 @@ class MessageBubbleView: UIView {
         setupView()
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        updateView()
+    }
+    
     func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "MessageBubbleView", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
-        self.updateView()
         return view
     }
     
@@ -85,6 +87,7 @@ class MessageBubbleView: UIView {
     // MARK: - Layout
     
     private func updateView() {
+        print("Test", self.isChatMode)
         switch messageType {
             case messageTypeToInt(.receiver):
                 self.changeImage("chat_bubble_received")
@@ -92,6 +95,7 @@ class MessageBubbleView: UIView {
                 self.messageTextLabel.textColor = .black
                 if let constraint = self.textBubbleViewTrailingConstraint, self.isChatMode {
                     constraint.isActive = false
+                    print("left")
                 }
 
             case messageTypeToInt(.sender):
@@ -100,14 +104,20 @@ class MessageBubbleView: UIView {
                 self.messageTextLabel.textColor = .white
                 if let constraint = self.textBubbleViewLeadingConstraint, self.isChatMode {
                     constraint.isActive = false
+                    print("right")
                 }
             default:
                 print("no messageType entered")
             }
-    
+        
+        let screenWidth = UIScreen.main.bounds.size.width
         if isChatMode {
-            let screenWidth = UIScreen.main.bounds.size.width
             self.textBubbleViewWidthConstraint.constant = screenWidth * 0.90
+            print("AI")
+        }
+        else {
+            self.textBubbleViewWidthConstraint.constant = screenWidth
+            print("AIhehe")
         }
     }
     
