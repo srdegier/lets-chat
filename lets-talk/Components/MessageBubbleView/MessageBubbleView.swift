@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-enum MessageType: Int {
+enum MessageType {
     case sender
     case receiver
     // case system
@@ -25,12 +25,11 @@ class MessageBubbleView: UIView {
     
     // MARK: - Properties
     
-    private var _messageType: MessageType = .sender
-
-    @IBInspectable public var messageType: Int {
-        get { _messageType.rawValue }
-        set {
-            _messageType = MessageType(rawValue: newValue) ?? .sender
+    // TODO: Remove inspectables
+    
+    public var messageType: MessageType = .sender {
+        didSet {
+            self.updateViewByMessageType()
         }
     }
     
@@ -53,6 +52,16 @@ class MessageBubbleView: UIView {
         }
     }
     
+    private var _isTailFlipped: Bool = false
+    
+    @IBInspectable public var isTailFlipped: Bool {
+        get { _isTailFlipped }
+        set {
+            _isTailFlipped = newValue
+            self.updateView()
+        }
+    }
+    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -67,17 +76,17 @@ class MessageBubbleView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        updateView()
+        self.updateView()
     }
     
-    func loadViewFromNib() -> UIView {
+    private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "MessageBubbleView", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
     
-    func setupView() {
+    private func setupView() {
         let view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -87,41 +96,55 @@ class MessageBubbleView: UIView {
     // MARK: - Layout
     
     private func updateView() {
-        print("Test", self.isChatMode)
-        switch messageType {
-            case messageTypeToInt(.receiver):
-                self.changeImage("chat_bubble_received")
-                self.chatBubbleImage.tintColor = .systemGray4
-                self.messageTextLabel.textColor = .black
-                if let constraint = self.textBubbleViewTrailingConstraint, self.isChatMode {
-                    constraint.isActive = false
-                    print("left")
-                }
-
-            case messageTypeToInt(.sender):
-                self.changeImage("chat_bubble_sent")
-                self.chatBubbleImage.tintColor = .systemBlue
-                self.messageTextLabel.textColor = .white
-                if let constraint = self.textBubbleViewLeadingConstraint, self.isChatMode {
-                    constraint.isActive = false
-                    print("right")
-                }
-            default:
-                print("no messageType entered")
-            }
-        
-        let screenWidth = UIScreen.main.bounds.size.width
-        if isChatMode {
+        if self.isChatMode {
+            let screenWidth = UIScreen.main.bounds.size.width
             self.textBubbleViewWidthConstraint.constant = screenWidth * 0.90
-            print("AI")
         }
-        else {
-            self.textBubbleViewWidthConstraint.constant = screenWidth
-            print("AIhehe")
+        
+        if self.isTailFlipped {
+            self.flipBubbleImage()
         }
+        self.layoutIfNeeded()
     }
     
     // MARK: - Methods
+    
+    private func updateViewByMessageType() {
+        // updating messageType for second time of same instants bugs semanticContentAttribute
+        switch self.messageType {
+            case .receiver:
+                self.changeImage("chat_bubble_received")
+                self.chatBubbleImage.tintColor = .systemGray4
+                self.messageTextLabel.textColor = .black
+                if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
+                    self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .equal)
+                    self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .greaterThanOrEqual)
+                    self.textBubbleView.semanticContentAttribute = .forceLeftToRight
+                }
+
+            case .sender:
+                self.changeImage("chat_bubble_sent")
+                self.chatBubbleImage.tintColor = .systemBlue
+                self.messageTextLabel.textColor = .white
+                if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
+                    self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .equal)
+                    self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .greaterThanOrEqual)
+                    self.textBubbleView.semanticContentAttribute = .forceRightToLeft
+                }
+        }
+        
+        self.updateConstraints()
+        self.layoutIfNeeded()
+    }
+    
+    private func updateViewConstraint(_ existingConstraint: NSLayoutConstraint, relation: NSLayoutConstraint.Relation) -> Void { // make helper function later.
+        if let superview = superview {
+            let newConstraint = NSLayoutConstraint(item: existingConstraint.firstItem as Any, attribute: existingConstraint.firstAttribute, relatedBy: relation, toItem: existingConstraint.secondItem, attribute: existingConstraint.secondAttribute, multiplier: existingConstraint.multiplier, constant: existingConstraint.constant)
+            
+            existingConstraint.isActive = false
+            superview.addConstraint(newConstraint)
+        }
+    }
     
     private func changeImage(_ name: String) {
         guard let image = UIImage(named: name) else { return }
@@ -132,9 +155,9 @@ class MessageBubbleView: UIView {
             .withRenderingMode(.alwaysTemplate)
     }
     
-    // Helper function to convert from MessageType to Int
-    private func messageTypeToInt(_ type: MessageType) -> Int {
-        return type.rawValue
+    private func flipBubbleImage() {
+        let transform = CATransform3DMakeScale(1, -1, 1)
+        self.chatBubbleImage.layer.transform = transform
     }
         
 }
