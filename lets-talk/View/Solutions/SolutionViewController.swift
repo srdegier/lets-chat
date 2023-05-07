@@ -14,5 +14,7 @@ class SolutionViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Solutions"
         print("SolutionViewController")
+
     }
+    
 }
