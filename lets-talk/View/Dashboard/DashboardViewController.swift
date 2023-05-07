@@ -9,6 +9,7 @@ import UIKit
 
 class DashboardViewController: UIViewController {
 
+    @IBOutlet weak var avatarMessageView: AvatarMessageView!
     @IBOutlet weak var dashboardCollectionView: UICollectionView!
     // MARK: - Properties
     
@@ -24,7 +25,15 @@ class DashboardViewController: UIViewController {
         
         self.dashboardCollectionView.delegate = self
         self.dashboardCollectionView.dataSource = self
+        
+        self.avatarMessageView.messageBubbleView.messageType = .receiver
+        self.avatarMessageView.avatarMessageText = self.viewModel.avatarMessage
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.avatarMessageView.startAnimation()
     }
 
 }
@@ -44,7 +53,6 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
         let dashboardComponentType = viewModel.messageComponentTypeForIndexPath(indexPath)
         var vc: UIViewController?
         
