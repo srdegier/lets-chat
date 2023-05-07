@@ -16,7 +16,11 @@ class DashboardViewModel {
     
     // MARK: - Properties
     
-    let dashboardComponentTypes: [DashboardComponentType]
+    public let dashboardComponentTypes: [DashboardComponentType]
+    
+    public var avatarMessage: String {
+        return "Goedenavond Stefan!"
+    }
 
     // MARK: - Initialization
 
@@ -24,20 +28,18 @@ class DashboardViewModel {
        self.dashboardComponentTypes = dashboardComponentTypes
     }
        
-
     
     // MARK: - Data Source
     
-    func numberOfSections() -> Int {
+    public func numberOfSections() -> Int {
         return 1
     }
     
-    func numberOfRowsInSection(_ section: Int) -> Int {
-        print(dashboardComponentTypes.count)
+    public func numberOfRowsInSection(_ section: Int) -> Int {
         return dashboardComponentTypes.count
     }
     
-    func titleForIndexPath(_ indexPath: IndexPath) -> String? {
+    public func titleForIndexPath(_ indexPath: IndexPath) -> String? {
         guard indexPath.row < dashboardComponentTypes.count else {
             return nil
         }
@@ -49,7 +51,7 @@ class DashboardViewModel {
         }
     }
     
-    func messageComponentTypeForIndexPath(_ indexPath: IndexPath) -> DashboardComponentType? {
+    public func messageComponentTypeForIndexPath(_ indexPath: IndexPath) -> DashboardComponentType? {
         guard indexPath.row < dashboardComponentTypes.count else {
             return nil
         }
