@@ -7,15 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		16111B6EC288C0D031D895A3 /* Pods_lets_talk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E0ADAE514694ADD773354E /* Pods_lets_talk.framework */; };
+		8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */; };
+		8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8750C39C29F5BBAE002DE176 /* Chat.storyboard */; };
+		8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39E29F5BBD3002DE176 /* ChatViewController.swift */; };
+		8759D5FD29F6B62600E828AB /* MessageBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8759D5FC29F6B62600E828AB /* MessageBubbleView.xib */; };
+		879068202A01604B008A7E6F /* AvatarMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8790681F2A01604B008A7E6F /* AvatarMessageView.swift */; };
+		879068222A017830008A7E6F /* AvatarMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879068212A017830008A7E6F /* AvatarMessageView.xib */; };
+		879068252A017C9B008A7E6F /* avatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 879068232A017C9B008A7E6F /* avatar.json */; };
+		879068282A0185A3008A7E6F /* avatar-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 879068272A0185A3008A7E6F /* avatar-2.json */; };
 		87D2124B29F0177A0035AF04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124A29F0177A0035AF04 /* AppDelegate.swift */; };
 		87D2124D29F0177A0035AF04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124C29F0177A0035AF04 /* SceneDelegate.swift */; };
 		87D2124F29F0177A0035AF04 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124E29F0177A0035AF04 /* DashboardViewController.swift */; };
 		87D2125229F0177A0035AF04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D2125029F0177A0035AF04 /* Main.storyboard */; };
 		87D2125429F0177B0035AF04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87D2125329F0177B0035AF04 /* Assets.xcassets */; };
 		87D2125729F0177B0035AF04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D2125529F0177B0035AF04 /* LaunchScreen.storyboard */; };
+		87D9551129F2E83E0054FF4A /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D9551029F2E83E0054FF4A /* ViewControllerFactory.swift */; };
+		87D9551329F2F1B80054FF4A /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D9551229F2F1B80054FF4A /* DashboardViewModel.swift */; };
+		87DA93CE29F5E3850096983E /* Solution.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87DA93CD29F5E3850096983E /* Solution.storyboard */; };
+		87DA93D029F5E3A60096983E /* SolutionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA93CF29F5E3A60096983E /* SolutionViewController.swift */; };
+		87DA93D429F69D330096983E /* MessageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DA93D329F69D330096983E /* MessageBubbleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		87325F2202292955AD26012E /* Pods-lets-talk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lets-talk.debug.xcconfig"; path = "Target Support Files/Pods-lets-talk/Pods-lets-talk.debug.xcconfig"; sourceTree = "<group>"; };
+		8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCollectionViewCell.swift; sourceTree = "<group>"; };
+		8750C39C29F5BBAE002DE176 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		8750C39E29F5BBD3002DE176 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		8759D5FC29F6B62600E828AB /* MessageBubbleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageBubbleView.xib; sourceTree = "<group>"; };
+		8790681F2A01604B008A7E6F /* AvatarMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarMessageView.swift; sourceTree = "<group>"; };
+		879068212A017830008A7E6F /* AvatarMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarMessageView.xib; sourceTree = "<group>"; };
+		879068232A017C9B008A7E6F /* avatar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = avatar.json; sourceTree = "<group>"; };
+		879068272A0185A3008A7E6F /* avatar-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "avatar-2.json"; path = "../../../../../../Downloads/avatar-2.json"; sourceTree = "<group>"; };
 		87D2124729F0177A0035AF04 /* lets-talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lets-talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D2124A29F0177A0035AF04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D2124C29F0177A0035AF04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +47,13 @@
 		87D2125329F0177B0035AF04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87D2125629F0177B0035AF04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87D2125829F0177B0035AF04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87D9551029F2E83E0054FF4A /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		87D9551229F2F1B80054FF4A /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		87DA93CD29F5E3850096983E /* Solution.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Solution.storyboard; sourceTree = "<group>"; };
+		87DA93CF29F5E3A60096983E /* SolutionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionViewController.swift; sourceTree = "<group>"; };
+		87DA93D329F69D330096983E /* MessageBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubbleView.swift; sourceTree = "<group>"; };
+		9D5DCE642BEA9A6B992D8CA7 /* Pods-lets-talk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lets-talk.release.xcconfig"; path = "Target Support Files/Pods-lets-talk/Pods-lets-talk.release.xcconfig"; sourceTree = "<group>"; };
+		C4E0ADAE514694ADD773354E /* Pods_lets_talk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_lets_talk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +61,74 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16111B6EC288C0D031D895A3 /* Pods_lets_talk.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04DC1B2BCE616028C03CE5AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4E0ADAE514694ADD773354E /* Pods_lets_talk.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8750C39A29F5BB7D002DE176 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				87D2124E29F0177A0035AF04 /* DashboardViewController.swift */,
+				8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */,
+				87D2125029F0177A0035AF04 /* Main.storyboard */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		8750C39B29F5BB96002DE176 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				8750C39C29F5BBAE002DE176 /* Chat.storyboard */,
+				8750C39E29F5BBD3002DE176 /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		8790681C2A013FC5008A7E6F /* LottieFiles */ = {
+			isa = PBXGroup;
+			children = (
+				879068272A0185A3008A7E6F /* avatar-2.json */,
+				879068232A017C9B008A7E6F /* avatar.json */,
+			);
+			path = LottieFiles;
+			sourceTree = "<group>";
+		};
+		8790681D2A014B98008A7E6F /* MessageBubbleView */ = {
+			isa = PBXGroup;
+			children = (
+				87DA93D329F69D330096983E /* MessageBubbleView.swift */,
+				8759D5FC29F6B62600E828AB /* MessageBubbleView.xib */,
+			);
+			path = MessageBubbleView;
+			sourceTree = "<group>";
+		};
+		8790681E2A015006008A7E6F /* AvatarMessageView */ = {
+			isa = PBXGroup;
+			children = (
+				8790681F2A01604B008A7E6F /* AvatarMessageView.swift */,
+				879068212A017830008A7E6F /* AvatarMessageView.xib */,
+			);
+			path = AvatarMessageView;
+			sourceTree = "<group>";
+		};
 		87D2123E29F0177A0035AF04 = {
 			isa = PBXGroup;
 			children = (
 				87D2124929F0177A0035AF04 /* lets-talk */,
 				87D2124829F0177A0035AF04 /* Products */,
+				CA1F987E1C726429DDE2BFA4 /* Pods */,
+				04DC1B2BCE616028C03CE5AC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +143,7 @@
 		87D2124929F0177A0035AF04 /* lets-talk */ = {
 			isa = PBXGroup;
 			children = (
+				8790681C2A013FC5008A7E6F /* LottieFiles */,
 				87D2126529F01D470035AF04 /* Helpers */,
 				87D2126429F01D3B0035AF04 /* Managers */,
 				87D2126329F01D2F0035AF04 /* Api */,
@@ -65,7 +153,6 @@
 				87D2125E29F01BC80035AF04 /* Model */,
 				87D2124A29F0177A0035AF04 /* AppDelegate.swift */,
 				87D2124C29F0177A0035AF04 /* SceneDelegate.swift */,
-				87D2125029F0177A0035AF04 /* Main.storyboard */,
 				87D2125329F0177B0035AF04 /* Assets.xcassets */,
 				87D2125529F0177B0035AF04 /* LaunchScreen.storyboard */,
 				87D2125829F0177B0035AF04 /* Info.plist */,
@@ -83,7 +170,10 @@
 		87D2125F29F01BED0035AF04 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				87D2124E29F0177A0035AF04 /* DashboardViewController.swift */,
+				87DA93CC29F5E3060096983E /* Solutions */,
+				8750C39B29F5BB96002DE176 /* Chat */,
+				8750C39A29F5BB7D002DE176 /* Dashboard */,
+				87D9551029F2E83E0054FF4A /* ViewControllerFactory.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -91,6 +181,7 @@
 		87D2126029F01BF90035AF04 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				87D9551229F2F1B80054FF4A /* DashboardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -98,6 +189,8 @@
 		87D2126129F01C110035AF04 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				8790681E2A015006008A7E6F /* AvatarMessageView */,
+				8790681D2A014B98008A7E6F /* MessageBubbleView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -123,6 +216,24 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		87DA93CC29F5E3060096983E /* Solutions */ = {
+			isa = PBXGroup;
+			children = (
+				87DA93CD29F5E3850096983E /* Solution.storyboard */,
+				87DA93CF29F5E3A60096983E /* SolutionViewController.swift */,
+			);
+			path = Solutions;
+			sourceTree = "<group>";
+		};
+		CA1F987E1C726429DDE2BFA4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				87325F2202292955AD26012E /* Pods-lets-talk.debug.xcconfig */,
+				9D5DCE642BEA9A6B992D8CA7 /* Pods-lets-talk.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -130,9 +241,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87D2125B29F0177B0035AF04 /* Build configuration list for PBXNativeTarget "lets-talk" */;
 			buildPhases = (
+				936422E0E97EA6DB3135199E /* [CP] Check Pods Manifest.lock */,
 				87D2124329F0177A0035AF04 /* Sources */,
 				87D2124429F0177A0035AF04 /* Frameworks */,
 				87D2124529F0177A0035AF04 /* Resources */,
+				DAE07D0AA1307294EC9352A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -181,13 +294,61 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87DA93CE29F5E3850096983E /* Solution.storyboard in Resources */,
 				87D2125729F0177B0035AF04 /* LaunchScreen.storyboard in Resources */,
+				879068252A017C9B008A7E6F /* avatar.json in Resources */,
+				879068282A0185A3008A7E6F /* avatar-2.json in Resources */,
 				87D2125429F0177B0035AF04 /* Assets.xcassets in Resources */,
+				8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */,
+				8759D5FD29F6B62600E828AB /* MessageBubbleView.xib in Resources */,
 				87D2125229F0177A0035AF04 /* Main.storyboard in Resources */,
+				879068222A017830008A7E6F /* AvatarMessageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		936422E0E97EA6DB3135199E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-lets-talk-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DAE07D0AA1307294EC9352A0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lets-talk/Pods-lets-talk-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-lets-talk/Pods-lets-talk-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-lets-talk/Pods-lets-talk-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		87D2124329F0177A0035AF04 /* Sources */ = {
@@ -195,6 +356,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D2124F29F0177A0035AF04 /* DashboardViewController.swift in Sources */,
+				87DA93D429F69D330096983E /* MessageBubbleView.swift in Sources */,
+				8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */,
+				87D9551329F2F1B80054FF4A /* DashboardViewModel.swift in Sources */,
+				87DA93D029F5E3A60096983E /* SolutionViewController.swift in Sources */,
+				879068202A01604B008A7E6F /* AvatarMessageView.swift in Sources */,
+				8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */,
+				87D9551129F2E83E0054FF4A /* ViewControllerFactory.swift in Sources */,
 				87D2124B29F0177A0035AF04 /* AppDelegate.swift in Sources */,
 				87D2124D29F0177A0035AF04 /* SceneDelegate.swift in Sources */,
 			);
@@ -338,6 +506,7 @@
 		};
 		87D2125C29F0177B0035AF04 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 87325F2202292955AD26012E /* Pods-lets-talk.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -346,6 +515,7 @@
 				DEVELOPMENT_TEAM = VX8CYT528Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lets-talk/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Let's Talk";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -366,6 +536,7 @@
 		};
 		87D2125D29F0177B0035AF04 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D5DCE642BEA9A6B992D8CA7 /* Pods-lets-talk.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -374,6 +545,7 @@
 				DEVELOPMENT_TEAM = VX8CYT528Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lets-talk/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Let's Talk";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
