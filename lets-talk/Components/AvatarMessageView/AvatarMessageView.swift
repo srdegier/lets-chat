@@ -49,6 +49,7 @@ class AvatarMessageView: UIView {
         addSubview(view)
         self.messageBubbleView.alpha = 0
         self.messageBubbleView.isTailFlipped = true
+        self.messageBubbleView.isChatMode = false
     }
     
     public func startAnimation() -> Void {
