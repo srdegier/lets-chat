@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
+            <connections>
+                <outlet property="AvatarAnimationView" destination="Up8-NA-MiM" id="oQA-Ih-jau"/>
+                <outlet property="centerXConstraint" destination="ZDc-5q-Xs4" id="So4-fV-6ik"/>
+                <outlet property="messageBubbleView" destination="BEu-mn-dGo" id="6xe-Wf-15n"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="513" height="227"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IjN-Zj-QJb">
+                    <rect key="frame" x="0.0" y="59" width="200" height="134"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Up8-NA-MiM" customClass="LottieAnimationView" customModule="Lottie">
+                    <rect key="frame" x="156.66666666666663" y="26" width="200" height="200"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="EWk-29-I16"/>
+                        <constraint firstAttribute="width" constant="200" id="m7a-bQ-FMQ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="avatar-2"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BEu-mn-dGo" customClass="MessageBubbleView" customModule="lets_talk" customModuleProvider="target">
+                    <rect key="frame" x="120" y="119" width="388" height="227"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isChatMode" value="NO"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="chatMessage" value="Hallo Stefan!"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="IjN-Zj-QJb" secondAttribute="top" id="0cy-M6-zbS"/>
+                <constraint firstAttribute="trailing" secondItem="BEu-mn-dGo" secondAttribute="trailing" constant="5" id="8cl-Ks-Tlq"/>
+                <constraint firstItem="BEu-mn-dGo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="CNG-JX-LiK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IjN-Zj-QJb" secondAttribute="bottom" id="FXL-VX-9dx"/>
+                <constraint firstItem="Up8-NA-MiM" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="Lhr-Qo-Duy"/>
+                <constraint firstItem="IjN-Zj-QJb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="THV-Yr-RPX"/>
+                <constraint firstItem="Up8-NA-MiM" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ZDc-5q-Xs4"/>
+                <constraint firstItem="Up8-NA-MiM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="-20" id="feb-rW-cDm"/>
+                <constraint firstItem="BEu-mn-dGo" firstAttribute="leading" secondItem="IjN-Zj-QJb" secondAttribute="trailing" constant="-80" id="ghR-2U-lQ5"/>
+                <constraint firstItem="BEu-mn-dGo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="60" id="ubh-jb-6o1"/>
+                <constraint firstItem="IjN-Zj-QJb" firstAttribute="width" secondItem="Up8-NA-MiM" secondAttribute="width" id="yPv-fE-VeC"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="217.55725190839695" y="-199.64788732394368"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
