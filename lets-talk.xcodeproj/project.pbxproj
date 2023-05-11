@@ -12,6 +12,8 @@
 		8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8750C39C29F5BBAE002DE176 /* Chat.storyboard */; };
 		8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39E29F5BBD3002DE176 /* ChatViewController.swift */; };
 		8759D5FD29F6B62600E828AB /* MessageBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8759D5FC29F6B62600E828AB /* MessageBubbleView.xib */; };
+		875A6BDA2A081FD100E722A4 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A6BD92A081FD100E722A4 /* ChatInputView.swift */; };
+		875A6BDC2A0820A200E722A4 /* ChatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 875A6BDB2A0820A200E722A4 /* ChatInputView.xib */; };
 		879068202A01604B008A7E6F /* AvatarMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8790681F2A01604B008A7E6F /* AvatarMessageView.swift */; };
 		879068222A017830008A7E6F /* AvatarMessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 879068212A017830008A7E6F /* AvatarMessageView.xib */; };
 		879068252A017C9B008A7E6F /* avatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 879068232A017C9B008A7E6F /* avatar.json */; };
@@ -35,6 +37,8 @@
 		8750C39C29F5BBAE002DE176 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		8750C39E29F5BBD3002DE176 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8759D5FC29F6B62600E828AB /* MessageBubbleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageBubbleView.xib; sourceTree = "<group>"; };
+		875A6BD92A081FD100E722A4 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
+		875A6BDB2A0820A200E722A4 /* ChatInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInputView.xib; sourceTree = "<group>"; };
 		8790681F2A01604B008A7E6F /* AvatarMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarMessageView.swift; sourceTree = "<group>"; };
 		879068212A017830008A7E6F /* AvatarMessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AvatarMessageView.xib; sourceTree = "<group>"; };
 		879068232A017C9B008A7E6F /* avatar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = avatar.json; sourceTree = "<group>"; };
@@ -93,6 +97,15 @@
 				8750C39E29F5BBD3002DE176 /* ChatViewController.swift */,
 			);
 			path = Chat;
+			sourceTree = "<group>";
+		};
+		875A6BD62A081D8B00E722A4 /* ChatInputView */ = {
+			isa = PBXGroup;
+			children = (
+				875A6BD92A081FD100E722A4 /* ChatInputView.swift */,
+				875A6BDB2A0820A200E722A4 /* ChatInputView.xib */,
+			);
+			path = ChatInputView;
 			sourceTree = "<group>";
 		};
 		8790681C2A013FC5008A7E6F /* LottieFiles */ = {
@@ -189,6 +202,7 @@
 		87D2126129F01C110035AF04 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				875A6BD62A081D8B00E722A4 /* ChatInputView */,
 				8790681E2A015006008A7E6F /* AvatarMessageView */,
 				8790681D2A014B98008A7E6F /* MessageBubbleView */,
 			);
@@ -299,6 +313,7 @@
 				879068252A017C9B008A7E6F /* avatar.json in Resources */,
 				879068282A0185A3008A7E6F /* avatar-2.json in Resources */,
 				87D2125429F0177B0035AF04 /* Assets.xcassets in Resources */,
+				875A6BDC2A0820A200E722A4 /* ChatInputView.xib in Resources */,
 				8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */,
 				8759D5FD29F6B62600E828AB /* MessageBubbleView.xib in Resources */,
 				87D2125229F0177A0035AF04 /* Main.storyboard in Resources */,
@@ -361,6 +376,7 @@
 				87D9551329F2F1B80054FF4A /* DashboardViewModel.swift in Sources */,
 				87DA93D029F5E3A60096983E /* SolutionViewController.swift in Sources */,
 				879068202A01604B008A7E6F /* AvatarMessageView.swift in Sources */,
+				875A6BDA2A081FD100E722A4 /* ChatInputView.swift in Sources */,
 				8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */,
 				87D9551129F2E83E0054FF4A /* ViewControllerFactory.swift in Sources */,
 				87D2124B29F0177A0035AF04 /* AppDelegate.swift in Sources */,

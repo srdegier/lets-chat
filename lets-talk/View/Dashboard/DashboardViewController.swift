@@ -20,7 +20,8 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Let's Talk"
+        self.navigationItem.title = ""
+        self.navigationItem.largeTitleDisplayMode = .never
         self.navigationItem.backButtonTitle = "Back"
         
         self.dashboardCollectionView.delegate = self
