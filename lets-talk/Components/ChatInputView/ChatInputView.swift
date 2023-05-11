@@ -8,30 +8,89 @@
 import Foundation
 import UIKit
 
+protocol ChatInputViewDelegate: AnyObject {
+    func sendButtonIsPressed(_ chatInputView: ChatInputView, finishedMessage: String?)
+}
+
 class ChatInputView: UIView, UITextViewDelegate {
     
+    @IBOutlet weak private var textContainerView: UIView! {
+        didSet {
+            self.textContainerView.layer.cornerRadius = 18
+            self.textContainerView.layer.borderWidth = 1
+            self.textContainerView.layer.borderColor = UIColor.systemGray.cgColor
+        }
+    }
     
-    @IBOutlet weak var textContainerView: UIView!
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var placeholderLabel: UILabel!
-    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
+    @IBOutlet weak private var textView: UITextView! {
+        didSet {
+            self.textView.delegate = self
+         }
+    }
     
+    @IBOutlet weak private var placeholderLabel: UILabel!
+    @IBOutlet weak private var textViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak private var sendButton: UIButton! {
+        didSet {
+            self.sendButton.isEnabled = self.sendButtonisEnabled
+        }
+    }
+    
+    // MARK: - Computed properties
+    
+    private var textViewContentHeight: CGFloat {
+        return self.textViewContentSize().height
+    }
+    
+    private lazy var textViewMaxHeight: CGFloat = {
+        return self.textView.font!.lineHeight * self.allowedTextLines
+    }()
+    
+    private var textViewNewHeight: CGFloat {
+        return min(self.textViewContentHeight, self.textViewMaxHeight)
+    }
+    
+    private var isTextViewAtMaxHeight: Bool {
+        return self.textViewNewHeight >= self.textViewMaxHeight
+    }
+    
+    private var isTextViewHeightNotEqualToNewHeight: Bool {
+        return textViewHeight.constant != textViewNewHeight
+    }
+
     // MARK: - Properties
     
-    override var intrinsicContentSize: CGSize {
-        return textViewContentSize()
+    weak public var delegate: ChatInputViewDelegate?
+    
+    public var currentMessage: String? {
+        didSet {
+            self.updateView()
+        }
+    }
+    
+    public var allowedTextLines: CGFloat = 5 {
+        didSet {
+            self.updateView()
+        }
+    }
+    
+    public var sendButtonisEnabled: Bool = true {
+        didSet {
+            self.sendButton.isEnabled = self.sendButtonisEnabled
+        }
     }
     
     // MARK: - Initializers
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
+        self.setupView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
+        self.setupView()
     }
     
     private func loadViewFromNib() -> UIView {
@@ -41,11 +100,10 @@ class ChatInputView: UIView, UITextViewDelegate {
         return view
     }
     
-    internal override func awakeFromNib() {
-        super.awakeFromNib()
-        self.textView.delegate = self
+    override var intrinsicContentSize: CGSize {
+        return self.textViewContentSize()
     }
-    
+        
     private func setupView() -> Void {
         let view = loadViewFromNib()
         view.frame = bounds
@@ -58,8 +116,27 @@ class ChatInputView: UIView, UITextViewDelegate {
     }
     
     // MARK: Methods
+    
+    private func updateView() {
         
-    func textViewContentSize() -> CGSize {
+        // if empty, delete textView text
+        if (self.currentMessage == nil){
+            self.textView.text = nil
+        }
+        
+        self.sendButton.isEnabled = self.sendButtonisEnabled
+        
+        if self.isTextViewHeightNotEqualToNewHeight {
+            self.textViewHeight.constant = self.textViewNewHeight
+            self.layoutIfNeeded()
+        }
+        
+        self.placeholderLabel.isHidden = !self.textView.text.isEmpty
+        
+        self.textView.isScrollEnabled = self.isTextViewAtMaxHeight
+    }
+        
+    private func textViewContentSize() -> CGSize {
         let size = CGSize(width: textView.bounds.width,
                           height: CGFloat.greatestFiniteMagnitude)
      
@@ -67,21 +144,12 @@ class ChatInputView: UIView, UITextViewDelegate {
         return CGSize(width: bounds.width, height: textSize.height)
     }
     
-    func textViewDidChange(_ textView: UITextView) {
-        self.placeholderLabel.isHidden = !textView.text.isEmpty
-        let contentHeight = self.textViewContentSize().height
-        
-        // Limit to 5 lines
-        let maxHeight = textView.font!.lineHeight * 5
-        let newHeight = min(contentHeight, maxHeight)
-        
-        if self.textViewHeight.constant != newHeight {
-            self.textViewHeight.constant = newHeight
-            self.layoutIfNeeded()
-            
-            // Enable scrolling if content height exceeds 5 lines
-            self.textView.isScrollEnabled = newHeight >= maxHeight
-        }
+    public func textViewDidChange(_ textView: UITextView) {
+        self.currentMessage = textView.text
     }
-
+    
+    @IBAction func sendButtonIsPressed(_ sender: Any) {
+        self.delegate?.sendButtonIsPressed(self, finishedMessage: self.currentMessage)
+    }
+    
 }

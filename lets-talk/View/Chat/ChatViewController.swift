@@ -8,14 +8,21 @@
 import Foundation
 import UIKit
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, ChatInputViewDelegate {
+
+    @IBOutlet weak var chatInputView: ChatInputView!
     
-    @IBOutlet weak var avatarMessageView: AvatarMessageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
-        navigationController?.navigationBar.prefersLargeTitles = false
-        print("ChatViewController")
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        self.chatInputView.delegate = self
+        self.chatInputView.allowedTextLines = 3
+    }
+    
+    func sendButtonIsPressed(_ chatInputView: ChatInputView, finishedMessage: String?) {
+        self.chatInputView.currentMessage = nil
     }
     
 }
