@@ -14,6 +14,7 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
+        navigationController?.navigationBar.prefersLargeTitles = false
         print("ChatViewController")
     }
     
