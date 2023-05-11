@@ -15,20 +15,45 @@
                     <view key="view" contentMode="scaleToFill" id="iGX-jd-eGz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1as-eh-732">
+                                <rect key="frame" x="0.0" y="50" width="375" height="679"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="20" translatesAutoresizingMaskIntoConstraints="NO" id="UPS-Sn-A5B" customClass="ChatInputView" customModule="lets_talk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="709" width="375" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="VOe-nD-tdB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VOe-nD-tdB" firstAttribute="bottom" secondItem="UPS-Sn-A5B" secondAttribute="bottom" id="66a-lz-EIZ"/>
+                            <constraint firstItem="1as-eh-732" firstAttribute="leading" secondItem="VOe-nD-tdB" secondAttribute="leading" id="Dyl-ph-Zt3"/>
+                            <constraint firstItem="1as-eh-732" firstAttribute="top" secondItem="VOe-nD-tdB" secondAttribute="top" id="EoB-lp-cfE"/>
+                            <constraint firstItem="VOe-nD-tdB" firstAttribute="trailing" secondItem="UPS-Sn-A5B" secondAttribute="trailing" id="R7h-av-9oP"/>
+                            <constraint firstItem="VOe-nD-tdB" firstAttribute="trailing" secondItem="1as-eh-732" secondAttribute="trailing" id="Wml-PT-1gH"/>
+                            <constraint firstItem="VOe-nD-tdB" firstAttribute="bottom" secondItem="1as-eh-732" secondAttribute="bottom" id="sgJ-oa-gVe"/>
+                            <constraint firstItem="UPS-Sn-A5B" firstAttribute="leading" secondItem="VOe-nD-tdB" secondAttribute="leading" id="ydT-H0-IZ4"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chatInputView" destination="UPS-Sn-A5B" id="6v3-7N-TkT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="4"/>
+            <point key="canvasLocation" x="-31.199999999999999" y="3.6945812807881775"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
