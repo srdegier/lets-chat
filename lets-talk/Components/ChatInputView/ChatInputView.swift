@@ -109,10 +109,6 @@ class ChatInputView: UIView, UITextViewDelegate {
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-        
-        self.textContainerView.layer.cornerRadius = 18
-        self.textContainerView.layer.borderWidth = 1
-        self.textContainerView.layer.borderColor = UIColor.systemGray.cgColor
     }
     
     // MARK: Methods
