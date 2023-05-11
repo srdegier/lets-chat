@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatInputView" customModule="lets_talk" customModuleProvider="target">
             <connections>
                 <outlet property="placeholderLabel" destination="aIA-oe-jjk" id="uyq-LQ-2i4"/>
+                <outlet property="sendButton" destination="JxP-Ox-BJM" id="ovN-QE-i3L"/>
                 <outlet property="textContainerView" destination="bPF-Wj-6Ej" id="vjH-6q-3Rj"/>
                 <outlet property="textView" destination="Q3U-rn-FjL" id="zGe-4P-c8w"/>
                 <outlet property="textViewHeight" destination="efp-MC-oia" id="zD6-lH-ZOI"/>
@@ -46,6 +47,9 @@
                             </constraints>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="arrow.up.circle.fill" catalog="system"/>
+                            <connections>
+                                <action selector="sendButtonIsPressed:" destination="-1" eventType="touchUpInside" id="wJE-bv-INq"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
