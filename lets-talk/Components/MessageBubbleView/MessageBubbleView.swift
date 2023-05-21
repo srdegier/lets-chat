@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-enum MessageType {
-    case sender
-    case receiver
+enum MessageType: String {
+    case sender = "sender"
+    case receiver = "receiver"
     // case system
 }
 
@@ -110,7 +110,7 @@ class MessageBubbleView: UIView {
     // MARK: - Methods
     
     private func updateViewByMessageType() {
-        // updating messageType for second time of same instants bugs semanticContentAttribute
+        //TODO: updating messageType for second time of same instants bugs semanticContentAttribute
         switch self.messageType {
             case .receiver:
                 self.changeImage("chat_bubble_received")

@@ -17,9 +17,11 @@ class ChatView: UIView {
         }
     }
     
+    @IBOutlet weak var chatInputView: ChatInputView!
+    
     // MARK: Properties
     
-    var chatData: [(message: String, messageType: MessageType)] = []
+    var chatData: [Message] = []
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,11 +63,34 @@ class ChatView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        // Scroll alleen naar het laatste bericht als er berichten zijn
-        guard !chatData.isEmpty else {
-            return
-        }
+        self.scrollToBottom()
+    }
+    
+    // MARK: Update view
+    
+    private func updateView() {
         
+    }
+    
+    // MARK: Methods
+    
+    public func addNewMessageToChat() {
+        // Voeg het nieuwe bericht toe aan de gegevensbron
+        
+        // Bepaal de index van het nieuwe bericht in de gegevensbron
+        let newIndex = self.chatData.count - 1
+        
+        // Maak het indexpad voor het nieuwe bericht
+        let indexPath = IndexPath(item: newIndex, section: 0)
+        
+        // Voeg het nieuwe item toe aan de UICollectionView
+        self.chatCollectionView.performBatchUpdates({
+            self.chatCollectionView.insertItems(at: [indexPath])
+        }, completion: nil)
+        self.scrollToBottom()
+    }
+    
+    private func scrollToBottom() {
         let lastMessageIndex = IndexPath(item: chatData.count - 1, section: 0)
         self.chatCollectionView.scrollToItem(at: lastMessageIndex, at: .bottom, animated: false)
     }
@@ -79,7 +104,7 @@ extension ChatView: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ChatCollectionViewCell
         let chatMessage = self.chatData[indexPath.item].message
-        let messageType = self.chatData[indexPath.item].messageType
+        let messageType = self.chatData[indexPath.item].type
         cell?.configure(with: chatMessage, isChatMode: true, messageType: messageType)
         return cell!
     }

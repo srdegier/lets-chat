@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="lets_talk" customModuleProvider="target">
             <connections>
                 <outlet property="chatCollectionView" destination="cj9-Gp-biM" id="mAo-AD-ew4"/>
+                <outlet property="chatInputView" destination="jKb-vD-we9" id="UWy-zI-tkH"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
