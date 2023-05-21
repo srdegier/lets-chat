@@ -21,8 +21,12 @@ class ChatView: UIView {
     
     // MARK: Properties
     
-    var chatData: [Message] = []
-    
+    var chatCollectionViewDataSource: ChatDataSourceProtocol! {
+         didSet {
+            self.chatCollectionView.dataSource = self.chatCollectionViewDataSource
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -46,9 +50,7 @@ class ChatView: UIView {
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
         
-        self.chatCollectionView.delegate = self
-        self.chatCollectionView.dataSource = self
-
+        //check if datasource is set
         var config = UICollectionLayoutListConfiguration(appearance: .plain)
         config.showsSeparators = false
         let layout = UICollectionViewCompositionalLayout.list(using: config)
@@ -62,27 +64,20 @@ class ChatView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        // Force developer to use the chatCollectionViewDataSource
+        guard chatCollectionViewDataSource != nil else {
+            fatalError("chatCollectionViewDataSource is not set.")
+        }
         self.scrollToBottom()
-    }
-    
-    // MARK: Update view
-    
-    private func updateView() {
-        
     }
     
     // MARK: Methods
     
     public func addNewMessageToChat() {
-        // Voeg het nieuwe bericht toe aan de gegevensbron
-        
         // Bepaal de index van het nieuwe bericht in de gegevensbron
-        let newIndex = self.chatData.count - 1
-        
+        let newIndex = self.chatCollectionView.numberOfItems(inSection: 0)
         // Maak het indexpad voor het nieuwe bericht
         let indexPath = IndexPath(item: newIndex, section: 0)
-        
         // Voeg het nieuwe item toe aan de UICollectionView
         self.chatCollectionView.performBatchUpdates({
             self.chatCollectionView.insertItems(at: [indexPath])
@@ -91,22 +86,8 @@ class ChatView: UIView {
     }
     
     private func scrollToBottom() {
-        let lastMessageIndex = IndexPath(item: chatData.count - 1, section: 0)
+        let lastItemIndex = self.chatCollectionView.numberOfItems(inSection: 0) - 1
+        let lastMessageIndex = IndexPath(item: lastItemIndex, section: 0)
         self.chatCollectionView.scrollToItem(at: lastMessageIndex, at: .bottom, animated: false)
     }
-}
-
-extension ChatView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return chatData.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = chatCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ChatCollectionViewCell
-        let chatMessage = self.chatData[indexPath.item].message
-        let messageType = self.chatData[indexPath.item].type
-        cell?.configure(with: chatMessage, isChatMode: true, messageType: messageType)
-        return cell!
-    }
-
 }
