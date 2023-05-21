@@ -7,5 +7,6 @@ target 'lets-talk' do
 
   # Pods for lets-talk
 pod 'lottie-ios'
+pod 'SQLite.swift', '~> 0.14.0'
 
 end
