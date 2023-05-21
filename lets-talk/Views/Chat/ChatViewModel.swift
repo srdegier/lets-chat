@@ -10,9 +10,7 @@ import Foundation
 class ChatViewModel {
     
     var messages: [Message] = [
-        (Message(message: "Super test bericht", type: .receiver)),
-        (Message(message: "JAAAAAA TOCHHH NIET DANNNN", type: .sender)),
-        (Message(message: "Super test bericht", type: .receiver)),
+        Message(message: "Super test bericht", type: .receiver),
     ]
     
     let messageRepository = MessageRepository()
@@ -24,9 +22,7 @@ class ChatViewModel {
             self.messageText = messageText?.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
-
     var messageType: MessageType?
-    
     var hasSolution: Bool? = false
     
     // MARK: Methods
@@ -41,6 +37,10 @@ class ChatViewModel {
         }
         // add new message to
         self.messages.append(Message(message: messageText, type: messageType))
+        
+    }
+    
+    public func fetchMessages() {
         
     }
 

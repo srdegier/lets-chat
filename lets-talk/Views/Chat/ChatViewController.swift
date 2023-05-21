@@ -12,15 +12,17 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
 
     @IBOutlet weak var chatView: ChatView!
     
-    let viewModel = ChatViewModel()
+    private let viewModel = ChatViewModel()
+    private var datasource: ChatDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        
-        self.chatView.chatData = self.viewModel.messages
+        self.datasource = ChatDataSource(viewModel: self.viewModel)
+        self.chatView.chatCollectionViewDataSource = self.datasource
         self.chatView.chatInputView.delegate = self
+
     }
     
     // MARK: Methods
@@ -40,7 +42,7 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
             // call viewmodel function for to add message to messages array
             self.viewModel.addNewMessage()
             // add newly add datasource to chatview
-            self.chatView.chatData = self.viewModel.messages
+           // self.chatView.chatData = self.viewModel.messages
             // perform a batch update to add the new message
             self.chatView.addNewMessageToChat()
             
