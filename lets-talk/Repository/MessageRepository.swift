@@ -32,8 +32,8 @@ class MessageRepository {
             try self.db.run(messages.create { table in
                 table.column(id, primaryKey: true)
                 table.column(text)
-                table.column(type, unique: true)
-                table.column(solution, unique: true)
+                table.column(type)
+                table.column(solution)
             })
         } catch {
             print("!@Error creating table: \(error)")
