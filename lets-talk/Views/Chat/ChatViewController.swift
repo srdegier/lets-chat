@@ -12,37 +12,34 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
 
     @IBOutlet weak var chatView: ChatView!
     
-    let viewModel = ChatViewModel()
+    private let viewModel = ChatViewModel()
+    private var chatViewDatasource: ChatDataSource?
+    private var chatViewDelegate: ChatDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
         self.navigationController?.navigationBar.prefersLargeTitles = false
-        
-        self.chatView.chatData = self.viewModel.messages
         self.chatView.chatInputView.delegate = self
+        self.chatView.chatInputView.allowedTextLines = 3
+        
+        self.chatViewDatasource = ChatDataSource(viewModel: self.viewModel)
+        self.chatViewDelegate = ChatDelegate(viewModel: self.viewModel)
+        self.chatView.chatCollectionViewDataSource = self.chatViewDatasource
+        self.chatView.chatCollectionViewDelegate = self.chatViewDelegate
     }
     
     // MARK: Methods
     
     func sendButtonIsPressed(_ chatInputView: ChatInputView, finishedMessage: String?) {
-        print("SIUUUUUUU")
         // remove text from chatinputview
         self.chatView.chatInputView.currentMessage = nil
         // disable chatinputview button
         self.chatView.chatInputView.sendButtonisEnabled = false
-        //self.viewModel.sendMessage()
+
         if let message = finishedMessage {
             // TODO: make function to be readable
-            self.viewModel.messageText = message
-            self.viewModel.messageType = .sender
-            
-            // call viewmodel function for to add message to messages array
-            self.viewModel.addNewMessage()
-            // add newly add datasource to chatview
-            self.chatView.chatData = self.viewModel.messages
-            // perform a batch update to add the new message
-            self.chatView.addNewMessageToChat()
+            self.sendMessage(message: message)
             
             // TODO: make function to be readable
             // call viewmodel function for getting the message back and place it in the array
@@ -52,6 +49,15 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         }
 
         self.chatView.chatInputView.sendButtonisEnabled = true
+    }
+    
+    private func sendMessage(message: String) {
+        self.viewModel.messageText = message
+        self.viewModel.messageType = .sender
+        // call viewmodel function for to add message to messages array
+        self.viewModel.addNewMessage()
+        // perform a batch update to add the new message
+        self.chatView.addNewMessageToChat()
     }
     
 }

@@ -18,10 +18,10 @@
             <rect key="frame" x="0.0" y="0.0" width="394" height="733"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cj9-Gp-biM">
-                    <rect key="frame" x="0.0" y="0.0" width="394" height="733"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cj9-Gp-biM" customClass="ChatCollectionView" customModule="lets_talk" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="394" height="605"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rmW-ye-RJQ">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IG4-DM-9bh">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -36,10 +36,10 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="cj9-Gp-biM" secondAttribute="trailing" id="95Y-CQ-usC"/>
+                <constraint firstItem="jKb-vD-we9" firstAttribute="top" secondItem="cj9-Gp-biM" secondAttribute="bottom" id="9mL-yX-2KU"/>
                 <constraint firstItem="cj9-Gp-biM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KfH-ZY-ZX4"/>
                 <constraint firstItem="jKb-vD-we9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ehV-hW-91e"/>
                 <constraint firstItem="cj9-Gp-biM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fkI-fC-gUR"/>
-                <constraint firstAttribute="bottom" secondItem="cj9-Gp-biM" secondAttribute="bottom" id="rcl-qc-Qah"/>
                 <constraint firstAttribute="bottom" secondItem="jKb-vD-we9" secondAttribute="bottom" id="wvH-sA-gWx"/>
                 <constraint firstAttribute="trailing" secondItem="jKb-vD-we9" secondAttribute="trailing" id="yre-om-W9M"/>
             </constraints>
