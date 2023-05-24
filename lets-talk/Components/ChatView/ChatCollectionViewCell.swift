@@ -32,9 +32,6 @@ class ChatCollectionViewCell: UICollectionViewCell {
         
         return attributes
     }
-
-
-
 }
 
 

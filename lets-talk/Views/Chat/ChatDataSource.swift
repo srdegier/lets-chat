@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ChatDataSource: NSObject, ChatDataSourceProtocol {
+class ChatDataSource: NSObject, ChatDataSourceProtocol, UICollectionViewDelegate {
 
     internal let viewModel: ChatViewModel
     
