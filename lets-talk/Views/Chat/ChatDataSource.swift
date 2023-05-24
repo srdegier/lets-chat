@@ -21,14 +21,15 @@ class ChatDataSource: NSObject, ChatDataSourceProtocol, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ChatCollectionViewCell else {
-            fatalError("Unable to dequeue ChatCollectionViewCell")
-        }
         
         let chatMessage = self.viewModel.messages[indexPath.item].message
         let messageType = self.viewModel.messages[indexPath.item].type
-        cell.configure(with: chatMessage, isChatMode: true, messageType: messageType)
         
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: messageType.rawValue, for: indexPath) as? ChatCollectionViewCell else {
+            fatalError("Unable to dequeue ChatCollectionViewCell")
+        }
+
+        cell.configure(with: chatMessage, isChatMode: true, messageType: messageType)
         return cell
     }
 }
