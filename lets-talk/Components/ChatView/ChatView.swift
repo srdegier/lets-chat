@@ -12,11 +12,11 @@ class ChatView: UIView {
 
     @IBOutlet weak var chatCollectionView: ChatCollectionView! {
         didSet {
-            // Registreer de cel voor de collectionView
-            self.chatCollectionView.register(UINib(nibName: "ChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
+            self.chatCollectionView.register(UINib(nibName: "ChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MessageType.sender.rawValue)
+            self.chatCollectionView.register(UINib(nibName: "ChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MessageType.receiver.rawValue)
         }
     }
-    
+
     @IBOutlet weak var chatInputView: ChatInputView!
     
     // MARK: Properties
@@ -55,14 +55,9 @@ class ChatView: UIView {
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
-        
-        //check if datasource is set
-        var config = UICollectionLayoutListConfiguration(appearance: .plain)
-        config.showsSeparators = false
-        let layout = UICollectionViewCompositionalLayout.list(using: config)
-        self.chatCollectionView.collectionViewLayout = layout
-        self.chatCollectionView.showsVerticalScrollIndicator = false
-        self.chatCollectionView.showsHorizontalScrollIndicator = false
+        if let flowLayout = chatCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSize(width: chatCollectionView.bounds.width, height: 50)
+        }
     }
     
     override func layoutSubviews() {
