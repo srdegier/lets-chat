@@ -19,6 +19,10 @@ class MessageRepository {
     let type = Expression<String>("type")
     let solution = Expression<Bool>("solution")
     
+    // MARK: Properties
+    
+    private var lastMessageID: Int64?
+    
     init() {
         guard let db = sqliteDatabaseManager.db else {
             fatalError("No database connection found")
@@ -46,6 +50,29 @@ class MessageRepository {
         } catch {
             print("!@insertion failed: \(error)")
         }
+    }
+    
+    public func getMessages() throws -> [Message] {
+        var fetchedMessages: [Message] = []
+        var query = messages.select(id, text, type).order(id.desc).limit(20)
+        if let lastID = self.lastMessageID {
+            query = query.filter(id < lastID)
+        }
+        
+        for row in try db.prepare(query) {
+            let messageID = row[id]
+            let messageText = row[text]
+            let messageTypeRawValue = row[type]
+            let messageType = MessageType(rawValue: messageTypeRawValue) ?? .receiver
+            
+            let message = Message(message: messageText, type: messageType)
+            fetchedMessages.append(message)
+            
+            self.lastMessageID = messageID
+
+        }
+        
+        return fetchedMessages.reversed()
     }
 
 }

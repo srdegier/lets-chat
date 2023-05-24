@@ -10,7 +10,7 @@ import UIKit
 
 class ChatView: UIView {
 
-    @IBOutlet weak var chatCollectionView: UICollectionView! {
+    @IBOutlet weak var chatCollectionView: ChatCollectionView! {
         didSet {
             // Registreer de cel voor de collectionView
             self.chatCollectionView.register(UINib(nibName: "ChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "cell")
@@ -21,9 +21,15 @@ class ChatView: UIView {
     
     // MARK: Properties
     
-    var chatCollectionViewDataSource: ChatDataSourceProtocol! {
+    var chatCollectionViewDataSource: ChatDataSourceProtocol? {
          didSet {
             self.chatCollectionView.dataSource = self.chatCollectionViewDataSource
+        }
+    }
+    
+    var chatCollectionViewDelegate: ChatDelegateProtocol? {
+         didSet {
+             self.chatCollectionView.delegate = self.chatCollectionViewDelegate
         }
     }
 
@@ -57,9 +63,6 @@ class ChatView: UIView {
         self.chatCollectionView.collectionViewLayout = layout
         self.chatCollectionView.showsVerticalScrollIndicator = false
         self.chatCollectionView.showsHorizontalScrollIndicator = false
-        
-        self.chatCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 70, right: 0)
-
     }
     
     override func layoutSubviews() {
@@ -68,7 +71,10 @@ class ChatView: UIView {
         guard chatCollectionViewDataSource != nil else {
             fatalError("chatCollectionViewDataSource is not set.")
         }
-        self.scrollToBottom()
+        guard chatCollectionViewDelegate != nil else {
+            fatalError("chatCollectionViewDelegate is not set.")
+        }
+        self.chatCollectionView.scrollToBottom()
     }
     
     // MARK: Methods
@@ -82,12 +88,6 @@ class ChatView: UIView {
         self.chatCollectionView.performBatchUpdates({
             self.chatCollectionView.insertItems(at: [indexPath])
         }, completion: nil)
-        self.scrollToBottom()
-    }
-    
-    private func scrollToBottom() {
-        let lastItemIndex = self.chatCollectionView.numberOfItems(inSection: 0) - 1
-        let lastMessageIndex = IndexPath(item: lastItemIndex, section: 0)
-        self.chatCollectionView.scrollToItem(at: lastMessageIndex, at: .bottom, animated: false)
+        self.chatCollectionView.scrollToBottom()
     }
 }

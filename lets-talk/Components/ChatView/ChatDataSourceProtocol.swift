@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol ChatDataSourceProtocol: UICollectionViewDataSource, UICollectionViewDelegate {
+protocol ChatDataSourceProtocol: UICollectionViewDataSource {
     var viewModel: ChatViewModel { get }
     init(viewModel: ChatViewModel)
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int

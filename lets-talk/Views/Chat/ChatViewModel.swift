@@ -10,8 +10,10 @@ import Foundation
 class ChatViewModel {
     
     var messages: [Message] = [
-        Message(message: "Super test bericht", type: .receiver),
+//        Message(message: "If you see this messages the messages has failed to be load", type: .receiver),
     ]
+    
+    var newMessagesCount: Int = 20
     
     let messageRepository = MessageRepository()
     
@@ -25,6 +27,10 @@ class ChatViewModel {
     var messageType: MessageType?
     var hasSolution: Bool? = false
     
+    init() {
+        self.fetchMessages()
+    }
+        
     // MARK: Methods
     
     public func addNewMessage() {
@@ -35,13 +41,19 @@ class ChatViewModel {
         if let messageTypeRawValue = self.messageType?.rawValue {
             self.messageRepository.addMessage(text: messageText, type: messageTypeRawValue, solution: hasSolution)
         }
-        // add new message to
+        // add new message to datasource
         self.messages.append(Message(message: messageText, type: messageType))
         
     }
     
     public func fetchMessages() {
-        
+        do {
+            let fetchedMessages = try messageRepository.getMessages()
+            self.newMessagesCount = fetchedMessages.count
+            self.messages.insert(contentsOf: fetchedMessages, at: 0) // Voeg de nieuwe berichten toe aan het begin van de array
+        } catch {
+            print("!@Error fetching messages: \(error)")
+        }
     }
-
+    
 }
