@@ -10,6 +10,7 @@ import UIKit
 
 class ChatView: UIView {
 
+    @IBOutlet weak var chatContainerViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var chatCollectionView: ChatCollectionView! {
         didSet {
             self.chatCollectionView.register(UINib(nibName: "ChatCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MessageType.sender.rawValue)
@@ -43,6 +44,10 @@ class ChatView: UIView {
         setupView()
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
     private func loadViewFromNib() -> UIView {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "ChatView", bundle: bundle)
@@ -55,9 +60,13 @@ class ChatView: UIView {
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         if let flowLayout = chatCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSize(width: chatCollectionView.bounds.width, height: 50)
         }
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        self.addGestureRecognizer(tapGesture)
     }
     
     override func layoutSubviews() {
@@ -85,4 +94,23 @@ class ChatView: UIView {
         }, completion: nil)
         self.chatCollectionView.scrollToBottom()
     }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            let keyboardHeight = keyboardFrame.height
+            self.chatContainerViewBottomConstraint.constant = keyboardHeight
+            self.layoutIfNeeded()
+            self.chatCollectionView.scrollToBottom()
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        self.chatContainerViewBottomConstraint.constant = 0
+        self.layoutIfNeeded()
+    }
+    
+    @objc private func handleTapGesture(_ gestureRecognizer: UITapGestureRecognizer) {
+        endEditing(true)
+    }
+
 }

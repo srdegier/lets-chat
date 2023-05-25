@@ -145,6 +145,7 @@ class ChatInputView: UIView, UITextViewDelegate {
     }
     
     @IBAction func sendButtonIsPressed(_ sender: Any) {
+        endEditing(true)
         self.delegate?.sendButtonIsPressed(self, finishedMessage: self.currentMessage)
     }
     
