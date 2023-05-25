@@ -2,4 +2,4 @@
 .DS_Store
 Pods/
 Podfile.lock
-Config/Config.swift
+lets-talk/Config/Config.swift
