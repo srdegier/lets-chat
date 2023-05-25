@@ -8,6 +8,11 @@
 import Foundation
 import SQLite
 
+enum SQLiteResult<T> {
+    case success(value: T)
+    case failure(error: Error)
+}
+
 class MessageRepository {
     
     private let sqliteDatabaseManager = SQLiteDatabaseManager.shared
@@ -44,14 +49,17 @@ class MessageRepository {
         }
     }
     
-    public func addMessage(text: String, type: String, solution: Bool) {
+    public func addMessage(text: String, type: String, solution: Bool) -> SQLiteResult<Int64> {
         do {
-            try self.db.run(messages.insert(self.text <- text, self.type <- type, self.solution <- solution))
+            let insert = messages.insert(self.text <- text, self.type <- type, self.solution <- solution)
+            let rowId = try db.run(insert)
+            return .success(value: rowId)
         } catch {
             print("!@insertion failed: \(error)")
+            return .failure(error: error)
         }
     }
-    
+
     public func getMessages() throws -> [Message] {
         var fetchedMessages: [Message] = []
         var query = messages.select(id, text, type).order(id.desc).limit(20)
@@ -65,7 +73,7 @@ class MessageRepository {
             let messageTypeRawValue = row[type]
             let messageType = MessageType(rawValue: messageTypeRawValue) ?? .receiver
             
-            let message = Message(message: messageText, type: messageType)
+            let message = Message(id: messageID, message: messageText, type: messageType)
             fetchedMessages.append(message)
             
             self.lastMessageID = messageID
