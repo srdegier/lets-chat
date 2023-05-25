@@ -32,6 +32,7 @@
 		879068252A017C9B008A7E6F /* avatar.json in Resources */ = {isa = PBXBuildFile; fileRef = 879068232A017C9B008A7E6F /* avatar.json */; };
 		879068282A0185A3008A7E6F /* avatar-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 879068272A0185A3008A7E6F /* avatar-2.json */; };
 		87CA117D2A1FF4710070A109 /* Config-copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA117C2A1FF4710070A109 /* Config-copy.swift */; };
+		87CA11832A1FF7710070A109 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA11822A1FF7710070A109 /* Config.swift */; };
 		87D2124B29F0177A0035AF04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124A29F0177A0035AF04 /* AppDelegate.swift */; };
 		87D2124D29F0177A0035AF04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124C29F0177A0035AF04 /* SceneDelegate.swift */; };
 		87D2124F29F0177A0035AF04 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124E29F0177A0035AF04 /* DashboardViewController.swift */; };
@@ -71,6 +72,7 @@
 		879068232A017C9B008A7E6F /* avatar.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = avatar.json; sourceTree = "<group>"; };
 		879068272A0185A3008A7E6F /* avatar-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "avatar-2.json"; path = "../../../../../../Downloads/avatar-2.json"; sourceTree = "<group>"; };
 		87CA117C2A1FF4710070A109 /* Config-copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config-copy.swift"; sourceTree = "<group>"; };
+		87CA11822A1FF7710070A109 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		87D2124729F0177A0035AF04 /* lets-talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lets-talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D2124A29F0177A0035AF04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D2124C29F0177A0035AF04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				87CA117C2A1FF4710070A109 /* Config-copy.swift */,
+				87CA11822A1FF7710070A109 /* Config.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				877AB59C2A167078002B21D7 /* ChatCollectionViewCell.swift in Sources */,
 				877AB5B02A1AB4C5002B21D7 /* ChatDataSourceProtocol.swift in Sources */,
 				8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */,
+				87CA11832A1FF7710070A109 /* Config.swift in Sources */,
 				877AB5AC2A1A3BB3002B21D7 /* SQLiteDatabaseManager.swift in Sources */,
 				87D9551329F2F1B80054FF4A /* DashboardViewModel.swift in Sources */,
 				87CA117D2A1FF4710070A109 /* Config-copy.swift in Sources */,
