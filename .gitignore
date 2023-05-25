@@ -2,4 +2,4 @@
 .DS_Store
 Pods/
 Podfile.lock
-Config.swift
+Config/Config.swift
