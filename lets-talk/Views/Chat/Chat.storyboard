@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSQ-X4-RhS" customClass="ChatView" customModule="lets_talk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="375" height="679"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
@@ -26,7 +26,7 @@
                         <constraints>
                             <constraint firstItem="gSQ-X4-RhS" firstAttribute="leading" secondItem="VOe-nD-tdB" secondAttribute="leading" id="LNQ-jM-sMM"/>
                             <constraint firstItem="VOe-nD-tdB" firstAttribute="trailing" secondItem="gSQ-X4-RhS" secondAttribute="trailing" id="Uca-aK-X01"/>
-                            <constraint firstItem="VOe-nD-tdB" firstAttribute="bottom" secondItem="gSQ-X4-RhS" secondAttribute="bottom" id="hoK-Fv-SEG"/>
+                            <constraint firstAttribute="bottom" secondItem="gSQ-X4-RhS" secondAttribute="bottom" id="hoK-Fv-SEG"/>
                             <constraint firstItem="gSQ-X4-RhS" firstAttribute="top" secondItem="VOe-nD-tdB" secondAttribute="top" id="zS9-PT-art"/>
                         </constraints>
                     </view>
