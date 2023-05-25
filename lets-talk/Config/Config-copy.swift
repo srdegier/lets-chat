@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Config {
+struct ConfigCopy {
     static var apiKey: String {
         return ""
     }
