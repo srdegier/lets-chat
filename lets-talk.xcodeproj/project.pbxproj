@@ -33,6 +33,7 @@
 		879068282A0185A3008A7E6F /* avatar-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 879068272A0185A3008A7E6F /* avatar-2.json */; };
 		87CA117D2A1FF4710070A109 /* Config-copy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA117C2A1FF4710070A109 /* Config-copy.swift */; };
 		87CA11832A1FF7710070A109 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CA11822A1FF7710070A109 /* Config.swift */; };
+		87CA11852A1FFBDB0070A109 /* Services in Resources */ = {isa = PBXBuildFile; fileRef = 87CA11842A1FFBDB0070A109 /* Services */; };
 		87D2124B29F0177A0035AF04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124A29F0177A0035AF04 /* AppDelegate.swift */; };
 		87D2124D29F0177A0035AF04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124C29F0177A0035AF04 /* SceneDelegate.swift */; };
 		87D2124F29F0177A0035AF04 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D2124E29F0177A0035AF04 /* DashboardViewController.swift */; };
@@ -73,6 +74,7 @@
 		879068272A0185A3008A7E6F /* avatar-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "avatar-2.json"; path = "../../../../../../Downloads/avatar-2.json"; sourceTree = "<group>"; };
 		87CA117C2A1FF4710070A109 /* Config-copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Config-copy.swift"; sourceTree = "<group>"; };
 		87CA11822A1FF7710070A109 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		87CA11842A1FFBDB0070A109 /* Services */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Services; sourceTree = "<group>"; };
 		87D2124729F0177A0035AF04 /* lets-talk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "lets-talk.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		87D2124A29F0177A0035AF04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87D2124C29F0177A0035AF04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				8790681C2A013FC5008A7E6F /* LottieFiles */,
 				87D2126529F01D470035AF04 /* Helpers */,
 				87D2126429F01D3B0035AF04 /* Managers */,
+				87CA11842A1FFBDB0070A109 /* Services */,
 				87D2126329F01D2F0035AF04 /* Api */,
 				87D2126129F01C110035AF04 /* Components */,
 				87D2125E29F01BC80035AF04 /* Model */,
@@ -380,6 +383,7 @@
 				8759D5FD29F6B62600E828AB /* MessageBubbleView.xib in Resources */,
 				87D2125229F0177A0035AF04 /* Main.storyboard in Resources */,
 				877AB59D2A167078002B21D7 /* ChatCollectionViewCell.xib in Resources */,
+				87CA11852A1FFBDB0070A109 /* Services in Resources */,
 				879068222A017830008A7E6F /* AvatarMessageView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
