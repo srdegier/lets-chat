@@ -9,4 +9,5 @@ target 'lets-talk' do
 pod 'lottie-ios'
 pod 'SQLite.swift', '~> 0.14.0'
 pod 'OpenAISwift'
+  
 end

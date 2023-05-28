@@ -8,6 +8,7 @@
 import Foundation
 import OpenAISwift
 
+
 class ChatViewModel {
     
     var messages: [Message] = [
@@ -61,7 +62,6 @@ class ChatViewModel {
             self.messages.append(Message(id: messageID, message: messageText, type: messageType))
         }
     }
-
 
     public func fetchMessages() {
         do {

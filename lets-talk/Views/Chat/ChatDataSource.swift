@@ -23,6 +23,7 @@ class ChatDataSource: NSObject, ChatDataSourceProtocol, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let id = self.viewModel.messages[indexPath.item].id
+
         let chatMessage = self.viewModel.messages[indexPath.item].message
         let messageType = self.viewModel.messages[indexPath.item].type
         

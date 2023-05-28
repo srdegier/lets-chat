@@ -74,6 +74,7 @@ class MessageRepository {
             let messageType = MessageType(rawValue: messageTypeRawValue) ?? .receiver
             
             let message = Message(id: messageID, message: messageText, type: messageType)
+
             fetchedMessages.append(message)
             
             self.lastMessageID = messageID

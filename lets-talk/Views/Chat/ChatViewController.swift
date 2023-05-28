@@ -50,6 +50,7 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         self.viewModel.messageType = .sender
         // call viewmodel function for to add message to messages array
         self.viewModel.saveNewMessage()
+
         // perform a batch update to add the new message
         self.chatView.addNewMessageToChat()
     }
@@ -58,5 +59,4 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         await self.viewModel.addNewRespondMessage()
         self.chatView.addNewMessageToChat()
     }
-    
 }
