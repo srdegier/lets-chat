@@ -91,6 +91,7 @@ class ChatView: UIView {
         // Voeg het nieuwe item toe aan de UICollectionView
         self.chatCollectionView.performBatchUpdates({
             self.chatCollectionView.insertItems(at: [indexPath])
+            self.chatCollectionView.scrollToBottom()
         }, completion: nil)
         self.chatCollectionView.scrollToBottom()
     }

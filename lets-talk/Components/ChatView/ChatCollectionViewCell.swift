@@ -16,7 +16,8 @@ class ChatCollectionViewCell: UICollectionViewCell {
         self.contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
 
-    func configure(with chatMessage: String, isChatMode: Bool, messageType: MessageType) {
+    func configure(with messageID: Int64, chatMessage: String, isChatMode: Bool, messageType: MessageType) {
+        self.messageBubbleView.messageID = messageID
         self.messageBubbleView.chatMessage = chatMessage
         self.messageBubbleView.isChatMode = isChatMode
         self.messageBubbleView.messageType = messageType

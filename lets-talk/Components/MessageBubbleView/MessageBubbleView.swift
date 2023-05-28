@@ -27,6 +27,8 @@ class MessageBubbleView: UIView {
     
     // TODO: Remove inspectables
     
+    public var messageID: Int64?
+    
     public var messageType: MessageType = .sender {
         didSet {
             self.updateViewByMessageType()

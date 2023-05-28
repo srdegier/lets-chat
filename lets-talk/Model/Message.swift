@@ -8,11 +8,12 @@
 import Foundation
 
 struct Message {
-    
+    let id: Int64
     let message: String
     let type: MessageType
     
-    init(message: String, type: MessageType) {
+    init(id: Int64, message: String, type: MessageType) {
+        self.id = id
         self.message = message
         self.type = type
     }

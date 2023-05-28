@@ -35,29 +35,28 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         // remove text from chatinputview
         self.chatView.chatInputView.currentMessage = nil
         // disable chatinputview button
-        self.chatView.chatInputView.sendButtonisEnabled = false
-
         if let message = finishedMessage {
-            // TODO: make function to be readable
+            self.chatView.chatInputView.sendButtonisEnabled = false
             self.sendMessage(message: message)
-            
-            // TODO: make function to be readable
-            // call viewmodel function for getting the message back and place it in the array
-            // self.viewModel.respondMessage() // receiveMessage?
-            // update the collectionview
-            // enable chatinputview button
         }
-
-        self.chatView.chatInputView.sendButtonisEnabled = true
+        Task {
+            await self.sendRespondMessage()
+            self.chatView.chatInputView.sendButtonisEnabled = true
+        }
     }
     
     private func sendMessage(message: String) {
         self.viewModel.messageText = message
         self.viewModel.messageType = .sender
         // call viewmodel function for to add message to messages array
-        self.viewModel.addNewMessage()
+        self.viewModel.saveNewMessage()
+
         // perform a batch update to add the new message
         self.chatView.addNewMessageToChat()
     }
     
+    private func sendRespondMessage() async {
+        await self.viewModel.addNewRespondMessage()
+        self.chatView.addNewMessageToChat()
+    }
 }
