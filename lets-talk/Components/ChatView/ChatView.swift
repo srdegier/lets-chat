@@ -91,17 +91,18 @@ class ChatView: UIView {
         // Voeg het nieuwe item toe aan de UICollectionView
         self.chatCollectionView.performBatchUpdates({
             self.chatCollectionView.insertItems(at: [indexPath])
+            self.layoutSubviews()
+        }, completion: { _ in
             self.chatCollectionView.scrollToBottom()
-        }, completion: nil)
-        self.chatCollectionView.scrollToBottom()
+        })
     }
-    
+
     @objc private func keyboardWillShow(_ notification: Notification) {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
             let keyboardHeight = keyboardFrame.height
             self.chatContainerViewBottomConstraint.constant = keyboardHeight
-            self.layoutIfNeeded()
             self.chatCollectionView.scrollToBottom()
+            self.layoutIfNeeded()
         }
     }
 
