@@ -11,19 +11,16 @@ import OpenAISwift
 
 class ChatViewModel {
     
-    var messages: [Message] = [
-//        Message(message: "If you see this messages the messages has failed to be load", type: .receiver),
-    ]
-    
-    var newMessagesCount: Int = 20
-    
     let messageRepository = MessageRepository()
     let openAIService = OpenAIService()
     
     // MARK: Properties
     
+    var messages: [Message] = [
+//        Message(message: "If you see this messages the messages has failed to be load", type: .receiver),
+    ]
+    var newMessagesCount: Int = 20
     var messageID: Int64?
-
     var messageText: String? {
         didSet {
             self.messageText = messageText?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -33,7 +30,7 @@ class ChatViewModel {
     var hasSolution: Bool? = false
     
     var preparedChatMessages: [ChatMessage]?
-    let systemMessage: String = "Act as a real friend which try to understand and has empathy. Your main goal is not to give a straight answer but rather to comfort your friend. This is your main goal"
+    let systemMessage: String = "Act as a real friend which try to understand and has empathy You wil not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: Flora Their name is: Stefan Your language is: Dutch Max words in your response: 60 Use sometimes emoji's"
     var respondMessage: String?
     
     init() {
@@ -87,7 +84,7 @@ class ChatViewModel {
     
     private func prepareRespondMessagePayload() async -> Void { //TODO: make a more effiecent wat for this
         if let startID = self.messages.last?.id {
-            let result: [Message] = self.getBatchOfMessages(startingID: startID, numberOfItems: 20, sortOrder: .orderedDescending)
+            let result: [Message] = self.getBatchOfMessages(startingID: startID, numberOfItems: 10, sortOrder: .orderedDescending)
             var preparedChatMessages = result.map { message -> ChatMessage in
                 let chatRole: ChatRole
                 switch message.type {

@@ -20,7 +20,11 @@ class OpenAIService {
             let result = try await openAI.sendChat(
                 with: chat,
                 model: .chat(.chatgpt),
-                maxTokens: 200
+                temperature: 0.5,
+                topProbabilityMass: 1.0,
+                maxTokens: 100,
+                presencePenalty: 0.0,
+                frequencyPenalty: 0.5
             )
             
             return .success(result)
