@@ -12,12 +12,14 @@ class ChatCollectionView: UICollectionView {
     
     override func reloadData() {
         super.reloadData()
-        print("@reloadData() wordt gebruikt voor chatCollectionView")
     }
     
     public func scrollToBottom() {
-        let lastItemIndex = self.numberOfItems(inSection: 0) - 1
-        let lastMessageIndex = IndexPath(item: lastItemIndex, section: 0)
-        self.scrollToItem(at: lastMessageIndex, at: .bottom, animated: false)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            let lastItemIndex = self.numberOfItems(inSection: 0) - 1
+            let lastMessageIndex = IndexPath(item: lastItemIndex, section: 0)
+            self.scrollToItem(at: lastMessageIndex, at: .bottom, animated: false)
+        }
+        self.layoutIfNeeded()
     }
 }
