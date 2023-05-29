@@ -16,13 +16,12 @@ class OpenAIService {
     public func fetchRespond(payload:[ChatMessage]) async -> Result<OpenAI<MessageResult>, Error> {
         do {
             let chat: [ChatMessage] = payload
-                        
             let result = try await openAI.sendChat(
                 with: chat,
                 model: .chat(.chatgpt),
                 temperature: 0.5,
                 topProbabilityMass: 1.0,
-                maxTokens: 100,
+                maxTokens: 200,
                 presencePenalty: 0.0,
                 frequencyPenalty: 0.5
             )
