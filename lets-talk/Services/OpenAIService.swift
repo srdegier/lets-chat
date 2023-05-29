@@ -11,7 +11,7 @@ import OpenAISwift
 class OpenAIService {
     
     // set apikey in the config file
-    let openAI = OpenAISwift(authToken: Config.apiKey)
+    let openAI = OpenAISwift(authToken: Config.apiKey())
     
     public func fetchRespond(payload:[ChatMessage]) async -> Result<OpenAI<MessageResult>, Error> {
         do {
