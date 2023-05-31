@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="156" height="75"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUQ-kN-mKe" customClass="MessageBubbleView" customModule="lets_talk" customModuleProvider="target">
+                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="156" placeholderIntrinsicHeight="75" translatesAutoresizingMaskIntoConstraints="NO" id="qUQ-kN-mKe" customClass="MessageBubbleView" customModule="lets_talk" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="156" height="75"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -23,7 +23,6 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="qUQ-kN-mKe" secondAttribute="bottom" id="Bpr-PE-0q8"/>
                 <constraint firstItem="qUQ-kN-mKe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Nrq-SC-13L"/>
                 <constraint firstItem="qUQ-kN-mKe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="h7p-sK-Xcm"/>
                 <constraint firstAttribute="trailing" secondItem="qUQ-kN-mKe" secondAttribute="trailing" id="zhY-UZ-EZ5"/>

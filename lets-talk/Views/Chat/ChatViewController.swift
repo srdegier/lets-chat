@@ -10,6 +10,7 @@ import UIKit
 
 class ChatViewController: UIViewController, ChatInputViewDelegate {
 
+    @IBOutlet weak var avatarMessageView: AvatarMessageView!
     @IBOutlet weak var chatView: ChatView!
     
     private let viewModel = ChatViewModel()
@@ -27,12 +28,21 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         self.chatViewDelegate = ChatDelegate(viewModel: self.viewModel)
         self.chatView.chatCollectionViewDataSource = self.chatViewDatasource
         self.chatView.chatCollectionViewDelegate = self.chatViewDelegate
+        
+        self.avatarMessageView.messageBubbleView.messageType = .receiver
+        self.avatarMessageView.avatarMessageText = "Het is belangrijk om te weten dat je altijd iemand hebt om op terug te vallen. Dus als er ooit iets is waarover je wilt praten, weet dan dat ik er voor je ben. 🌸"
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.avatarMessageView.startAnimation()
     }
     
     // MARK: Methods
     
     func sendButtonIsPressed(_ chatInputView: ChatInputView, finishedMessage: String?) {
         // remove text from chatinputview
+        self.avatarMessageView.avatarMessageText = "Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken et nadenken Aan het nadenken Aan het nadenken et nadenken Aan het nadenken Aan het nadenken"
         self.chatView.chatInputView.currentMessage = nil
         // disable chatinputview button
         if let message = finishedMessage {

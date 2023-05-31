@@ -11,12 +11,14 @@ import Lottie
 
 class AvatarMessageView: UIView {
     
+    @IBOutlet weak var avatarAnimationViewXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var avatarMessageViewContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var avatarAnimationView: LottieAnimationView!
     @IBOutlet weak var messageBubbleView: MessageBubbleView!
-    @IBOutlet weak var centerXConstraint: NSLayoutConstraint!
+    @IBOutlet weak var messageBubbleViewTopConstraint: NSLayoutConstraint!
     
     private var _avatarMessageText: String?
-
+    
     public var avatarMessageText: String? {
         get { _avatarMessageText }
         set {
@@ -25,13 +27,8 @@ class AvatarMessageView: UIView {
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    override func awakeFromNib() {
+        super.awakeFromNib()
         setupView()
     }
     
@@ -42,32 +39,46 @@ class AvatarMessageView: UIView {
         return view
     }
     
-    private func setupView() -> Void {
+    private func setupView() {
         let view = loadViewFromNib()
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
         self.messageBubbleView.alpha = 0
         self.messageBubbleView.isTailFlipped = true
-        self.messageBubbleView.isChatMode = false
+    }
+    
+    override func layoutSubviews() {
+        //self.frame.size.height = 1000
+//        self.avatarMessageViewContainerHeightConstraint.constant = self.messageBubbleView.bounds.size.height + 50
     }
     
     public func startAnimation() -> Void {
-        if self.avatarMessageText != nil {
-            if let centerXConstraint = self.centerXConstraint {
-                UIView.animate(withDuration: 1.0, animations: {
-                    centerXConstraint.isActive = false
-                    self.layoutIfNeeded()
-                }) {_ in
-                    self.avatarAnimationView.loopMode = .loop
-                    self.avatarAnimationView.play()
-                    UIView.animate(withDuration: 0.5) {
-                        self.messageBubbleView.alpha = 1
+        if let centerXConstraint = self.avatarAnimationViewXConstraint {
+            UIView.animate(withDuration: 1.0, animations: {
+                centerXConstraint.isActive = false
+                self.layoutIfNeeded()
+            }) {_ in
+                self.avatarAnimationView.loopMode = .loop
+                self.avatarAnimationView.play()
+                UIView.animate(withDuration: 0.5) {
+                    let messageHeight = self.messageBubbleView.frame.size.height + self.messageBubbleViewTopConstraint.constant
+                    if self.avatarAnimationView.frame.size.height >= messageHeight {
+                        print("messageheight is te klein")
+                    } else {
+                        self.avatarMessageViewContainerHeightConstraint.constant = messageHeight
                     }
+                    self.layoutIfNeeded()
+                }
+                // Voeg hier je extra animatie toe
+                UIView.animate(withDuration: 0.4) {
+                    self.messageBubbleView.alpha = 1
+                    self.layoutIfNeeded()
                 }
             }
         }
     }
-
+    
 }
+
 

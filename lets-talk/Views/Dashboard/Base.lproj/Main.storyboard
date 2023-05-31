@@ -17,15 +17,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFv-If-XAT" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
-                                <rect key="frame" x="10" y="146" width="355" height="200"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="ghY-yS-Rtm"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="G8T-bD-tiq" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="146" width="375" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OSa-Um-0N6">
-                                <rect key="frame" x="0.0" y="346" width="375" height="466"/>
+                                <rect key="frame" x="0.0" y="274" width="375" height="538"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="Jl2-Rn-pd0">
                                     <size key="itemSize" width="324" height="107"/>
@@ -75,18 +72,18 @@
                         <viewLayoutGuide key="safeArea" id="cpo-3W-bWg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cpo-3W-bWg" firstAttribute="trailing" secondItem="UFv-If-XAT" secondAttribute="trailing" constant="10" id="AHJ-dF-3v5"/>
+                            <constraint firstItem="G8T-bD-tiq" firstAttribute="leading" secondItem="axL-Qw-Kda" secondAttribute="leading" id="8Ag-Tc-3l7"/>
                             <constraint firstItem="OSa-Um-0N6" firstAttribute="leading" secondItem="axL-Qw-Kda" secondAttribute="leading" id="DpQ-IG-pit"/>
-                            <constraint firstItem="UFv-If-XAT" firstAttribute="leading" secondItem="cpo-3W-bWg" secondAttribute="leading" constant="10" id="IHu-vI-J3X"/>
-                            <constraint firstItem="OSa-Um-0N6" firstAttribute="top" secondItem="UFv-If-XAT" secondAttribute="bottom" id="NFF-H6-4Rd"/>
+                            <constraint firstAttribute="trailing" secondItem="G8T-bD-tiq" secondAttribute="trailing" id="HqZ-3f-SzQ"/>
+                            <constraint firstItem="G8T-bD-tiq" firstAttribute="top" secondItem="cpo-3W-bWg" secondAttribute="top" id="Vh6-ud-49A"/>
                             <constraint firstAttribute="bottom" secondItem="OSa-Um-0N6" secondAttribute="bottom" id="bHq-Ff-Bza"/>
                             <constraint firstAttribute="trailing" secondItem="OSa-Um-0N6" secondAttribute="trailing" id="lMH-zN-zDy"/>
-                            <constraint firstItem="cpo-3W-bWg" firstAttribute="top" secondItem="UFv-If-XAT" secondAttribute="top" id="xXd-tA-WdG"/>
+                            <constraint firstItem="OSa-Um-0N6" firstAttribute="top" secondItem="G8T-bD-tiq" secondAttribute="bottom" id="nra-2B-KWg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="etR-ye-J2Z"/>
                     <connections>
-                        <outlet property="avatarMessageView" destination="UFv-If-XAT" id="NdP-71-nMb"/>
+                        <outlet property="avatarMessageView" destination="G8T-bD-tiq" id="qi4-fo-3nG"/>
                         <outlet property="dashboardCollectionView" destination="OSa-Um-0N6" id="HdU-b4-cvs"/>
                     </connections>
                 </viewController>

@@ -14,25 +14,33 @@
                 <viewController storyboardIdentifier="ChatViewController" id="Y6W-OH-hqX" customClass="ChatViewController" customModule="lets_talk" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iGX-jd-eGz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSQ-X4-RhS" customClass="ChatView" customModule="lets_talk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="375" height="762"/>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Uwe-cL-OGa" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="375" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="634" translatesAutoresizingMaskIntoConstraints="NO" id="gSQ-X4-RhS" customClass="ChatView" customModule="lets_talk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="178" width="375" height="634"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VOe-nD-tdB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="gSQ-X4-RhS" firstAttribute="top" secondItem="Uwe-cL-OGa" secondAttribute="bottom" id="Cv7-Af-Jjn"/>
                             <constraint firstItem="gSQ-X4-RhS" firstAttribute="leading" secondItem="VOe-nD-tdB" secondAttribute="leading" id="LNQ-jM-sMM"/>
                             <constraint firstItem="VOe-nD-tdB" firstAttribute="trailing" secondItem="gSQ-X4-RhS" secondAttribute="trailing" id="Uca-aK-X01"/>
+                            <constraint firstItem="VOe-nD-tdB" firstAttribute="trailing" secondItem="Uwe-cL-OGa" secondAttribute="trailing" id="YGa-UQ-R61"/>
                             <constraint firstAttribute="bottom" secondItem="gSQ-X4-RhS" secondAttribute="bottom" id="hoK-Fv-SEG"/>
-                            <constraint firstItem="gSQ-X4-RhS" firstAttribute="top" secondItem="VOe-nD-tdB" secondAttribute="top" id="zS9-PT-art"/>
+                            <constraint firstItem="Uwe-cL-OGa" firstAttribute="leading" secondItem="VOe-nD-tdB" secondAttribute="leading" id="jSP-Su-v3A"/>
+                            <constraint firstItem="Uwe-cL-OGa" firstAttribute="top" secondItem="VOe-nD-tdB" secondAttribute="top" id="ut1-Ao-uOB"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="avatarMessageView" destination="Uwe-cL-OGa" id="fV6-mJ-dt1"/>
                         <outlet property="chatView" destination="gSQ-X4-RhS" id="GwN-iI-xFu"/>
                     </connections>
                 </viewController>
