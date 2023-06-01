@@ -10,16 +10,25 @@ import UIKit
 
 class ChatViewController: UIViewController, ChatInputViewDelegate {
 
+    @IBOutlet weak var avatarMessageView: AvatarMessageView!
     @IBOutlet weak var chatView: ChatView!
     
     private let viewModel = ChatViewModel()
     private var chatViewDatasource: ChatDataSource?
     private var chatViewDelegate: ChatDelegate?
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         self.chatView.chatInputView.delegate = self
         self.chatView.chatInputView.allowedTextLines = 3
         
@@ -27,9 +36,33 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         self.chatViewDelegate = ChatDelegate(viewModel: self.viewModel)
         self.chatView.chatCollectionViewDataSource = self.chatViewDatasource
         self.chatView.chatCollectionViewDelegate = self.chatViewDelegate
+        
+        self.avatarMessageView.messageBubbleView.messageType = .receiver
+        self.avatarMessageView.avatarMessageText = "Hoi Stefan, hoe is het met je vandaag?"
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.avatarMessageView.revealAnimation()
+        self.avatarMessageView.slideAvatarViewAnimation() {
+            self.avatarMessageView.revealMessageAnimation()
+        }
     }
     
     // MARK: Methods
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        self.avatarMessageView.hideAnimation() {
+            if (self.viewModel.messageText != nil) {
+                self.chatView.addNewMessageToChat()
+                self.viewModel.messageText = nil
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        //self.avatarMessageView.revealAnimation()
+    }
     
     func sendButtonIsPressed(_ chatInputView: ChatInputView, finishedMessage: String?) {
         // remove text from chatinputview
@@ -39,10 +72,23 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
             self.chatView.chatInputView.sendButtonisEnabled = false
             self.sendMessage(message: message)
         }
-        Task {
-            await self.sendRespondMessage()
-            self.chatView.chatInputView.sendButtonisEnabled = true
+        self.avatarMessageView.slideRevertViewAnimation()
+        self.avatarMessageView.hideMessageAnimation() {
+            Task {
+                // do the animation where it is typing
+                self.avatarMessageView.slideRevertViewAnimation()
+                self.avatarMessageView.changeAnimation(fileName: "chatting")
+                
+                await self.sendRespondMessage()
+                self.avatarMessageView.avatarMessageText = self.viewModel.respondMessage
+                self.avatarMessageView.changeAnimation(fileName: "avatar-2")
+                self.avatarMessageView.slideAvatarViewAnimation() {
+                    self.avatarMessageView.revealMessageAnimation()
+                }
+                self.chatView.chatInputView.sendButtonisEnabled = true
+            }
         }
+
     }
     
     private func sendMessage(message: String) {
@@ -57,6 +103,5 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
     
     private func sendRespondMessage() async {
         await self.viewModel.addNewRespondMessage()
-        self.chatView.addNewMessageToChat()
     }
 }
