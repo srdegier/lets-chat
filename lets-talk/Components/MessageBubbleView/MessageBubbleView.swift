@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-enum MessageType {
-    case sender
-    case receiver
+enum MessageType: String {
+    case sender = "sender"
+    case receiver = "receiver"
     // case system
 }
 
@@ -26,6 +26,8 @@ class MessageBubbleView: UIView {
     // MARK: - Properties
     
     // TODO: Remove inspectables
+    
+    public var messageID: Int64?
     
     public var messageType: MessageType = .sender {
         didSet {
@@ -110,30 +112,25 @@ class MessageBubbleView: UIView {
     // MARK: - Methods
     
     private func updateViewByMessageType() {
-        // updating messageType for second time of same instants bugs semanticContentAttribute
         switch self.messageType {
-            case .receiver:
-                self.changeImage("chat_bubble_received")
-                self.chatBubbleImage.tintColor = .systemGray4
-                self.messageTextLabel.textColor = .black
-                if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
-                    self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .equal)
-                    self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .greaterThanOrEqual)
-                    self.textBubbleView.semanticContentAttribute = .forceLeftToRight
-                }
-
-            case .sender:
-                self.changeImage("chat_bubble_sent")
-                self.chatBubbleImage.tintColor = .systemBlue
-                self.messageTextLabel.textColor = .white
-                if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
-                    self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .equal)
-                    self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .greaterThanOrEqual)
-                    self.textBubbleView.semanticContentAttribute = .forceRightToLeft
-                }
+        case .receiver:
+            self.changeImage("chat_bubble_received")
+            self.chatBubbleImage.tintColor = .systemGray4
+            if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
+                self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .equal)
+                self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .greaterThanOrEqual)
+                self.textBubbleView.semanticContentAttribute = .forceLeftToRight
+            }
+        case .sender:
+            self.changeImage("chat_bubble_sent")
+            self.chatBubbleImage.tintColor = .systemBlue
+            self.messageTextLabel.textColor = .white
+            if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
+                self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .equal)
+                self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .greaterThanOrEqual)
+                self.textBubbleView.semanticContentAttribute = .forceRightToLeft
+            }
         }
-        
-        self.updateConstraints()
         self.layoutIfNeeded()
     }
     

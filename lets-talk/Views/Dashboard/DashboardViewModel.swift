@@ -19,7 +19,7 @@ class DashboardViewModel {
     public let dashboardComponentTypes: [DashboardComponentType]
     
     public var avatarMessage: String {
-        return "Goedenavond Stefan!"
+        return "Good evening Stefan!"
     }
 
     // MARK: - Initialization
