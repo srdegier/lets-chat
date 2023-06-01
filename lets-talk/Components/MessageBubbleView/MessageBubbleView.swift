@@ -116,7 +116,6 @@ class MessageBubbleView: UIView {
         case .receiver:
             self.changeImage("chat_bubble_received")
             self.chatBubbleImage.tintColor = .systemGray4
-            self.messageTextLabel.textColor = .black
             if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
                 self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .equal)
                 self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .greaterThanOrEqual)
