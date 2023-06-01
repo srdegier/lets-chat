@@ -61,6 +61,8 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
         let dashboardComponentType = viewModel.messageComponentTypeForIndexPath(indexPath)
         var vc: UIViewController?
         
+        HapticFeedbackManager.shared.performImpactFeedback(style: .medium)
+        
         switch dashboardComponentType {
         case .chat:
             vc = ViewControllerFactory.chatViewController()

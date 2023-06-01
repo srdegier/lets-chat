@@ -82,6 +82,7 @@ class AvatarMessageView: UIView {
                 centerXConstraint.isActive = false
                 self.layoutIfNeeded()
             }) { (_) in
+                HapticFeedbackManager.shared.performNotificationFeedback(type: .success)
                 completion?()
             }
         }
@@ -103,7 +104,7 @@ class AvatarMessageView: UIView {
         UIView.animate(withDuration: 0.5, animations: {
             let messageHeight = self.messageBubbleView.frame.size.height + self.messageBubbleViewTopConstraint.constant
             if self.avatarAnimationView.frame.size.height >= messageHeight {
-                print("messageheight is te klein")
+                // do somthing here if you wish
             } else {
                 self.avatarMessageViewContainerHeightConstraint.constant = messageHeight + 20
             }
