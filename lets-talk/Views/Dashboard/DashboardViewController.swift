@@ -34,7 +34,11 @@ class DashboardViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.avatarMessageView.startAnimation()
+        self.avatarMessageView.revealAnimation() {
+            self.avatarMessageView.slideAvatarViewAnimation() {
+                self.avatarMessageView.revealMessageAnimation()
+            }
+        }
     }
 
 }

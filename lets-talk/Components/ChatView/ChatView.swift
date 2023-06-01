@@ -65,6 +65,7 @@ class ChatView: UIView {
         if let flowLayout = chatCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSize(width: chatCollectionView.bounds.width, height: 50)
         }
+        self.chatCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
         self.addGestureRecognizer(tapGesture)
     }
@@ -78,7 +79,7 @@ class ChatView: UIView {
         guard chatCollectionViewDelegate != nil else {
             fatalError("chatCollectionViewDelegate is not set.")
         }
-        self.chatCollectionView.scrollToBottom()
+        self.chatCollectionView.scrollToBottom(withoutDelay: true)
     }
     
     // MARK: Methods

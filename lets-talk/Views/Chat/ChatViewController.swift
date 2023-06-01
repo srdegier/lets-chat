@@ -17,10 +17,18 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
     private var chatViewDatasource: ChatDataSource?
     private var chatViewDelegate: ChatDelegate?
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Chat"
         self.navigationController?.navigationBar.prefersLargeTitles = false
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         self.chatView.chatInputView.delegate = self
         self.chatView.chatInputView.allowedTextLines = 3
         
@@ -30,29 +38,57 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         self.chatView.chatCollectionViewDelegate = self.chatViewDelegate
         
         self.avatarMessageView.messageBubbleView.messageType = .receiver
-        self.avatarMessageView.avatarMessageText = "Het is belangrijk om te weten dat je altijd iemand hebt om op terug te vallen. Dus als er ooit iets is waarover je wilt praten, weet dan dat ik er voor je ben. 🌸"
+        self.avatarMessageView.avatarMessageText = "Hoi Stefan, hoe is het met je vandaag?"
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.avatarMessageView.startAnimation()
+        self.avatarMessageView.revealAnimation()
+        self.avatarMessageView.slideAvatarViewAnimation() {
+            self.avatarMessageView.revealMessageAnimation()
+        }
     }
     
     // MARK: Methods
     
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        self.avatarMessageView.hideAnimation() {
+            if (self.viewModel.messageText != nil) {
+                self.chatView.addNewMessageToChat()
+                self.viewModel.messageText = nil
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        //self.avatarMessageView.revealAnimation()
+    }
+    
     func sendButtonIsPressed(_ chatInputView: ChatInputView, finishedMessage: String?) {
         // remove text from chatinputview
-        self.avatarMessageView.avatarMessageText = "Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken Aan het nadenken et nadenken Aan het nadenken Aan het nadenken et nadenken Aan het nadenken Aan het nadenken"
         self.chatView.chatInputView.currentMessage = nil
         // disable chatinputview button
         if let message = finishedMessage {
             self.chatView.chatInputView.sendButtonisEnabled = false
             self.sendMessage(message: message)
         }
-        Task {
-            await self.sendRespondMessage()
-            self.chatView.chatInputView.sendButtonisEnabled = true
+        self.avatarMessageView.slideRevertViewAnimation()
+        self.avatarMessageView.hideMessageAnimation() {
+            Task {
+                // do the animation where it is typing
+                self.avatarMessageView.slideRevertViewAnimation()
+                self.avatarMessageView.changeAnimation(fileName: "chatting")
+                
+                await self.sendRespondMessage()
+                self.avatarMessageView.avatarMessageText = self.viewModel.respondMessage
+                self.avatarMessageView.changeAnimation(fileName: "avatar-2")
+                self.avatarMessageView.slideAvatarViewAnimation() {
+                    self.avatarMessageView.revealMessageAnimation()
+                }
+                self.chatView.chatInputView.sendButtonisEnabled = true
+            }
         }
+
     }
     
     private func sendMessage(message: String) {
@@ -67,6 +103,5 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
     
     private func sendRespondMessage() async {
         await self.viewModel.addNewRespondMessage()
-        self.chatView.addNewMessageToChat()
     }
 }

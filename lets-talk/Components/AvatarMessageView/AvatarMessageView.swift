@@ -44,41 +44,102 @@ class AvatarMessageView: UIView {
         view.frame = bounds
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(view)
+        self.avatarMessageViewContainerHeightConstraint.constant = 0
         self.messageBubbleView.alpha = 0
         self.messageBubbleView.isTailFlipped = true
     }
     
-    override func layoutSubviews() {
-        //self.frame.size.height = 1000
-//        self.avatarMessageViewContainerHeightConstraint.constant = self.messageBubbleView.bounds.size.height + 50
+    // MARK: Animations
+    
+    public func revealAnimation(completion: (() -> Void)? = nil) -> Void {
+        UIView.animate(withDuration: 1.0, animations: {
+            self.avatarMessageViewContainerHeightConstraint.constant = 200
+            self.contentMode = .top
+            self.superview?.layoutIfNeeded()
+        }) { (_) in
+            self.avatarAnimationView.loopMode = .loop
+            self.avatarAnimationView.play()
+            completion?()
+        }
+        
     }
     
-    public func startAnimation() -> Void {
+    public func hideAnimation(completion: (() -> Void)? = nil) -> Void {
+        UIView.animate(withDuration: 1.0, animations: {
+            self.avatarMessageViewContainerHeightConstraint.constant = 0
+            self.superview?.layoutIfNeeded()
+        }) { (_) in
+            completion?()
+        }
+    }
+    
+    private var originalCenterXConstraint: NSLayoutConstraint?
+    
+    public func slideAvatarViewAnimation(completion: (() -> Void)? = nil) -> Void {
         if let centerXConstraint = self.avatarAnimationViewXConstraint {
+            self.originalCenterXConstraint = centerXConstraint
             UIView.animate(withDuration: 1.0, animations: {
                 centerXConstraint.isActive = false
                 self.layoutIfNeeded()
-            }) {_ in
-                self.avatarAnimationView.loopMode = .loop
-                self.avatarAnimationView.play()
-                UIView.animate(withDuration: 0.5) {
-                    let messageHeight = self.messageBubbleView.frame.size.height + self.messageBubbleViewTopConstraint.constant
-                    if self.avatarAnimationView.frame.size.height >= messageHeight {
-                        print("messageheight is te klein")
-                    } else {
-                        self.avatarMessageViewContainerHeightConstraint.constant = messageHeight
-                    }
-                    self.layoutIfNeeded()
-                }
-                // Voeg hier je extra animatie toe
-                UIView.animate(withDuration: 0.4) {
-                    self.messageBubbleView.alpha = 1
-                    self.layoutIfNeeded()
-                }
+            }) { (_) in
+                completion?()
             }
         }
     }
     
+    public func slideRevertViewAnimation(completion: (() -> Void)? = nil) -> Void {
+        if let centerXConstraint = originalCenterXConstraint {
+            UIView.animate(withDuration: 1.0, animations: {
+                centerXConstraint.isActive = true
+                self.layoutIfNeeded()
+            }) { (_) in
+                completion?()
+            }
+            self.originalCenterXConstraint = nil
+        }
+    }
+    
+    public func revealMessageAnimation(completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.5, animations: {
+            let messageHeight = self.messageBubbleView.frame.size.height + self.messageBubbleViewTopConstraint.constant
+            if self.avatarAnimationView.frame.size.height >= messageHeight {
+                print("messageheight is te klein")
+            } else {
+                self.avatarMessageViewContainerHeightConstraint.constant = messageHeight + 20
+            }
+            self.messageBubbleView.alpha = 1
+            self.layoutIfNeeded()
+        }) { (_) in
+            completion?()
+        }
+    }
+    
+    public func changeAnimation(fileName: String, completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.avatarAnimationView.alpha = 0
+            self.layoutIfNeeded()
+        }) { (_) in
+            UIView.animate(withDuration: 1.0) {
+                self.avatarAnimationView.alpha = 1
+                self.avatarAnimationView.animation = LottieAnimation.named(fileName)
+                self.avatarAnimationView.reloadImages()
+                self.avatarAnimationView.loopMode = .loop
+                self.avatarAnimationView.play()
+                completion?()
+            }
+        }
+    }
+    
+    public func hideMessageAnimation(completion: (() -> Void)? = nil) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.avatarMessageViewContainerHeightConstraint.constant = 220
+            self.messageBubbleView.alpha = 0
+            self.layoutIfNeeded()
+        }) { (_) in
+            completion?()
+        }
+    }
+
 }
 
 

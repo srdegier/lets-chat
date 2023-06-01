@@ -14,12 +14,24 @@ class ChatCollectionView: UICollectionView {
         super.reloadData()
     }
     
-    public func scrollToBottom() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
-            let lastItemIndex = self.numberOfItems(inSection: 0) - 1
-            let lastMessageIndex = IndexPath(item: lastItemIndex, section: 0)
-            self.scrollToItem(at: lastMessageIndex, at: .bottom, animated: false)
+    public func scrollToBottom(withoutDelay: Bool = false) {
+
+        if !withoutDelay {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                self.scrollToItemBottom()
+                self.layoutIfNeeded()
+            }
+        } else {
+            self.scrollToItemBottom()
+            print("In de else")
         }
+
+    }
+    
+    private func scrollToItemBottom() {
+        let lastItemIndex = self.numberOfItems(inSection: 0) - 1
+        let lastMessageIndex = IndexPath(item: lastItemIndex, section: 0)
+        self.scrollToItem(at: lastMessageIndex, at: .bottom, animated: false)
         self.layoutIfNeeded()
     }
 }
