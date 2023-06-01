@@ -40,6 +40,10 @@ class DashboardViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func didTapDeleteButton(_ sender: Any) {
+        SQLiteDatabaseManager.shared.deleteDatabase()
+    }
 
 }
 
