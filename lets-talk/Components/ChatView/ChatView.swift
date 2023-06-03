@@ -94,6 +94,7 @@ class ChatView: UIView {
             self.chatCollectionView.insertItems(at: [indexPath])
             self.layoutSubviews()
         }, completion: { _ in
+            HapticFeedbackManager.shared.performImpactFeedback(style: .medium)
             self.chatCollectionView.scrollToBottom()
         })
     }

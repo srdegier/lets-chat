@@ -40,6 +40,10 @@ class DashboardViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func didTapDeleteButton(_ sender: Any) {
+        SQLiteDatabaseManager.shared.deleteDatabase()
+    }
 
 }
 
@@ -60,6 +64,8 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let dashboardComponentType = viewModel.messageComponentTypeForIndexPath(indexPath)
         var vc: UIViewController?
+        
+        HapticFeedbackManager.shared.performImpactFeedback(style: .medium)
         
         switch dashboardComponentType {
         case .chat:

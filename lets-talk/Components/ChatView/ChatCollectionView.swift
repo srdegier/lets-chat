@@ -23,7 +23,6 @@ class ChatCollectionView: UICollectionView {
             }
         } else {
             self.scrollToItemBottom()
-            print("In de else")
         }
 
     }
