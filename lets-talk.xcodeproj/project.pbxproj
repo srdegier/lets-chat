@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		16111B6EC288C0D031D895A3 /* Pods_lets_talk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E0ADAE514694ADD773354E /* Pods_lets_talk.framework */; };
+		873C22E02A2BCF21004F6B56 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C22DE2A2BCF21004F6B56 /* SettingsViewController.swift */; };
+		873C22E32A2BD01C004F6B56 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873C22E22A2BD01C004F6B56 /* Settings.storyboard */; };
+		873C22E52A2BEC38004F6B56 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C22E42A2BEC38004F6B56 /* SettingTableViewCell.swift */; };
+		873C22E72A2CC939004F6B56 /* SettingOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C22E62A2CC939004F6B56 /* SettingOption.swift */; };
+		873C22E92A2CDC35004F6B56 /* DashboardComponentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C22E82A2CDC35004F6B56 /* DashboardComponentOption.swift */; };
 		8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */; };
 		8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8750C39C29F5BBAE002DE176 /* Chat.storyboard */; };
 		8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39E29F5BBD3002DE176 /* ChatViewController.swift */; };
@@ -53,6 +58,11 @@
 
 /* Begin PBXFileReference section */
 		87325F2202292955AD26012E /* Pods-lets-talk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-lets-talk.debug.xcconfig"; path = "Target Support Files/Pods-lets-talk/Pods-lets-talk.debug.xcconfig"; sourceTree = "<group>"; };
+		873C22DE2A2BCF21004F6B56 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		873C22E22A2BD01C004F6B56 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		873C22E42A2BEC38004F6B56 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		873C22E62A2CC939004F6B56 /* SettingOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingOption.swift; sourceTree = "<group>"; };
+		873C22E82A2CDC35004F6B56 /* DashboardComponentOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardComponentOption.swift; sourceTree = "<group>"; };
 		8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCollectionViewCell.swift; sourceTree = "<group>"; };
 		8750C39C29F5BBAE002DE176 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		8750C39E29F5BBD3002DE176 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +128,16 @@
 				C4E0ADAE514694ADD773354E /* Pods_lets_talk.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		873C22DB2A2BCD08004F6B56 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				873C22E22A2BD01C004F6B56 /* Settings.storyboard */,
+				873C22DE2A2BCF21004F6B56 /* SettingsViewController.swift */,
+				873C22E42A2BEC38004F6B56 /* SettingTableViewCell.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		8750C39A29F5BB7D002DE176 /* Dashboard */ = {
@@ -257,6 +277,8 @@
 			isa = PBXGroup;
 			children = (
 				877AB5A62A1942DD002B21D7 /* Message.swift */,
+				873C22E62A2CC939004F6B56 /* SettingOption.swift */,
+				873C22E82A2CDC35004F6B56 /* DashboardComponentOption.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +286,7 @@
 		87D2125F29F01BED0035AF04 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				873C22DB2A2BCD08004F6B56 /* Settings */,
 				87DA93CC29F5E3060096983E /* Solutions */,
 				8750C39B29F5BB96002DE176 /* Chat */,
 				8750C39A29F5BB7D002DE176 /* Dashboard */,
@@ -385,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				879DCC5C2A293EB000064AD1 /* Secrets.plist in Resources */,
+				873C22E32A2BD01C004F6B56 /* Settings.storyboard in Resources */,
 				87DA93CE29F5E3850096983E /* Solution.storyboard in Resources */,
 				877AB5932A1556A9002B21D7 /* ChatView.xib in Resources */,
 				87D2125729F0177B0035AF04 /* LaunchScreen.storyboard in Resources */,
@@ -464,17 +488,21 @@
 				87DA93D029F5E3A60096983E /* SolutionViewController.swift in Sources */,
 				877AB5A72A1942DD002B21D7 /* Message.swift in Sources */,
 				877AB5B22A1BE6B6002B21D7 /* ChatDelegateProtocol.swift in Sources */,
+				873C22E52A2BEC38004F6B56 /* SettingTableViewCell.swift in Sources */,
 				879068202A01604B008A7E6F /* AvatarMessageView.swift in Sources */,
 				877AB5AE2A1A93B7002B21D7 /* ChatDataSource.swift in Sources */,
 				877AB5A52A17FE6A002B21D7 /* ChatViewModel.swift in Sources */,
 				875A6BDA2A081FD100E722A4 /* ChatInputView.swift in Sources */,
+				873C22E92A2CDC35004F6B56 /* DashboardComponentOption.swift in Sources */,
 				877AB5B42A1BE749002B21D7 /* ChatDelegate.swift in Sources */,
+				873C22E72A2CC939004F6B56 /* SettingOption.swift in Sources */,
 				8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */,
 				87D9551129F2E83E0054FF4A /* ViewControllerFactory.swift in Sources */,
 				87D2124B29F0177A0035AF04 /* AppDelegate.swift in Sources */,
 				87D2124D29F0177A0035AF04 /* SceneDelegate.swift in Sources */,
 				877AB0DB2A23AC55000F6201 /* OpenAIService.swift in Sources */,
 				879DCC5E2A29418200064AD1 /* HapticFeedbackManagers.swift in Sources */,
+				873C22E02A2BCF21004F6B56 /* SettingsViewController.swift in Sources */,
 				877AB5B62A1C1365002B21D7 /* ChatCollectionView.swift in Sources */,
 				877AB5AA2A1A3A62002B21D7 /* MessageRepository.swift in Sources */,
 			);
