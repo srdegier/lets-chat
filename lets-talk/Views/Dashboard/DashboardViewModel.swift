@@ -7,60 +7,34 @@
 
 import Foundation
 
-enum DashboardComponentType {
-    case chat
-    case solutions
-}
-
 class DashboardViewModel {
     
     // MARK: - Properties
-    
-    public let dashboardComponentTypes: [DashboardComponentType]
-    
     public var avatarMessage: String {
         return "Good evening Stefan!"
     }
-
-    // MARK: - Initialization
-
-    init(dashboardComponentTypes: [DashboardComponentType]) {
-       self.dashboardComponentTypes = dashboardComponentTypes
-    }
-       
     
     // MARK: - Data Source
+    private var dashboardComponentOptions: [DashboardComponentOption] {
+        return [
+            DashboardComponentOption(title: "Chat 💬", viewControllerType: .chat),
+            DashboardComponentOption(title: "Solutions 💡", viewControllerType: .solutions)
+        ]
+    }
     
     public func numberOfSections() -> Int {
         return 1
     }
     
     public func numberOfRowsInSection(_ section: Int) -> Int {
-        return dashboardComponentTypes.count
+        return self.dashboardComponentOptions.count
     }
     
-    public func titleForIndexPath(_ indexPath: IndexPath) -> String? {
-        guard indexPath.row < dashboardComponentTypes.count else {
+    public func dashboardComponentOptionForIndexPath(_ indexPath: IndexPath) -> DashboardComponentOption? {
+        guard indexPath.row < dashboardComponentOptions.count else {
             return nil
         }
-        switch dashboardComponentTypes[indexPath.row] {
-        case .chat:
-            return "Chat 💬"
-        case .solutions:
-            return "Solutions 💡"
-        }
+        return self.dashboardComponentOptions[indexPath.row]
     }
-    
-    public func messageComponentTypeForIndexPath(_ indexPath: IndexPath) -> DashboardComponentType? {
-        guard indexPath.row < dashboardComponentTypes.count else {
-            return nil
-        }
-        
-        return dashboardComponentTypes[indexPath.row]
-    }
-    
-//    func someViewModel() -> SomeViewModel? {
-//        return SomeViewModel()
-//    }
 
 }

@@ -11,19 +11,20 @@ class DashboardViewController: UIViewController {
 
     @IBOutlet weak var avatarMessageView: AvatarMessageView!
     @IBOutlet weak var dashboardCollectionView: UICollectionView!
+    
     // MARK: - Properties
     
-    var viewModel = DashboardViewModel(dashboardComponentTypes: [.chat, .solutions])
-    
+    var viewModel = DashboardViewModel()
     
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = ""
-        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.title = "Let's Chat"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.backButtonTitle = "Back"
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettingsButton))
+
         self.dashboardCollectionView.delegate = self
         self.dashboardCollectionView.dataSource = self
         
@@ -44,6 +45,11 @@ class DashboardViewController: UIViewController {
     @IBAction func didTapDeleteButton(_ sender: Any) {
         SQLiteDatabaseManager.shared.deleteDatabase()
     }
+    
+    @objc func didTapSettingsButton() {
+        guard let vc = ViewControllerFactory.settingsViewController() else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
 }
 
@@ -57,26 +63,18 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dashboardCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? NavigationCollectionViewCell
-        cell?.navigationTitleLabel.text = viewModel.titleForIndexPath(indexPath)
+        cell?.navigationTitleLabel.text = viewModel.dashboardComponentOptionForIndexPath(indexPath)?.title
         return cell!
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let dashboardComponentType = viewModel.messageComponentTypeForIndexPath(indexPath)
-        var vc: UIViewController?
-        
-        HapticFeedbackManager.shared.performImpactFeedback(style: .medium)
-        
-        switch dashboardComponentType {
-        case .chat:
-            vc = ViewControllerFactory.chatViewController()
-        case .solutions:
-            vc = ViewControllerFactory.solutionsViewController()
-        case .none:
-            print("none, throw error")
+        guard let dashboardComponentOption = viewModel.dashboardComponentOptionForIndexPath(indexPath),
+              let viewController = dashboardComponentOption.viewControllerType.viewController
+        else {
+            print("No valid ViewController")
+            return
         }
-        guard let vc = vc else { return }
-        
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
+
 }
