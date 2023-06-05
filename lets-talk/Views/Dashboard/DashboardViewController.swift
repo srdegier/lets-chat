@@ -20,8 +20,8 @@ class DashboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = ""
-        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationItem.title = "Let's Chat"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.backButtonTitle = "Back"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettingsButton))
 
