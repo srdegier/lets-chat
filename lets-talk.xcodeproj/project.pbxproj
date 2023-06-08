@@ -22,6 +22,7 @@
 		873C22FD2A2E840F004F6B56 /* ProfileSettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873C22FC2A2E840F004F6B56 /* ProfileSettings.storyboard */; };
 		873C23002A2E853C004F6B56 /* HistorySettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C22FF2A2E853C004F6B56 /* HistorySettingsViewController.swift */; };
 		873C23022A2E85BB004F6B56 /* HistorySettings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873C23012A2E85BB004F6B56 /* HistorySettings.storyboard */; };
+		873C23042A320146004F6B56 /* BuddyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C23032A320146004F6B56 /* BuddyViewModel.swift */; };
 		8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */; };
 		8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8750C39C29F5BBAE002DE176 /* Chat.storyboard */; };
 		8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39E29F5BBD3002DE176 /* ChatViewController.swift */; };
@@ -81,6 +82,7 @@
 		873C22FC2A2E840F004F6B56 /* ProfileSettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileSettings.storyboard; sourceTree = "<group>"; };
 		873C22FF2A2E853C004F6B56 /* HistorySettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySettingsViewController.swift; sourceTree = "<group>"; };
 		873C23012A2E85BB004F6B56 /* HistorySettings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistorySettings.storyboard; sourceTree = "<group>"; };
+		873C23032A320146004F6B56 /* BuddyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyViewModel.swift; sourceTree = "<group>"; };
 		8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCollectionViewCell.swift; sourceTree = "<group>"; };
 		8750C39C29F5BBAE002DE176 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		8750C39E29F5BBD3002DE176 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				873C22F42A2E82C9004F6B56 /* BuddySettingsViewController.swift */,
+				873C23032A320146004F6B56 /* BuddyViewModel.swift */,
 				873C22F82A2E8377004F6B56 /* BuddySettings.storyboard */,
 			);
 			path = Buddy;
@@ -545,6 +548,7 @@
 				87D9551329F2F1B80054FF4A /* DashboardViewModel.swift in Sources */,
 				873C23002A2E853C004F6B56 /* HistorySettingsViewController.swift in Sources */,
 				877AB5952A15589B002B21D7 /* ChatView.swift in Sources */,
+				873C23042A320146004F6B56 /* BuddyViewModel.swift in Sources */,
 				87DA93D029F5E3A60096983E /* SolutionViewController.swift in Sources */,
 				877AB5A72A1942DD002B21D7 /* Message.swift in Sources */,
 				877AB5B22A1BE6B6002B21D7 /* ChatDelegateProtocol.swift in Sources */,
