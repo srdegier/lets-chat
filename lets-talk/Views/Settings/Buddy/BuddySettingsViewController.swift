@@ -99,6 +99,11 @@ class BuddySettingsViewController: UIViewController {
         if errorMessages.isEmpty {
             self.viewModel.updateBuddy()
             self.saveButton.isEnabled = false
+            //reset error fields if needed
+            self.nameErrorLabel.isHidden = true
+            self.languageErrorLabel.isHidden = true
+            self.personalityErrorLabel.isHidden = true
+            self.behaviourErrorLabel.isHidden = true
         } else {
             for (fieldName, errorMessage) in errorMessages {
                 switch fieldName {
