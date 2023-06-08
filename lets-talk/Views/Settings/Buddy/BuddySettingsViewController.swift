@@ -192,6 +192,8 @@ class BuddySettingsViewController: UIViewController {
     
 }
 
+// TODO: Do preparing data in the viewmodel lol
+
 extension BuddySettingsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         1
