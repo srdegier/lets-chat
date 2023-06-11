@@ -80,7 +80,7 @@ class BuddySettingsViewController: UIViewController {
         //TODO: Make proper computed property for getting rawvalue and capitalizedSentence
         self.languageTextField.text = self.viewModel.buddy?.language.rawValue.capitalizedSentence
         self.personalityTextView.text = self.viewModel.buddy?.personality.rawValue.capitalizedSentence
-        self.personalityOptionalTextView.text = self.viewModel.buddy?.personalityOptional?.rawValue.capitalizedSentence
+        self.personalityOptionalTextView.text = self.viewModel.buddy?.personalityOptional.rawValue.capitalizedSentence
     }
     
     
@@ -95,7 +95,7 @@ class BuddySettingsViewController: UIViewController {
     @objc private func didTapSaveButton() {
         let errorMessages = self.viewModel.validateFields()
         if errorMessages.isEmpty {
-            self.viewModel.updateBuddy()
+            self.viewModel.saveBuddy()
             self.saveButton.isEnabled = false
             //reset error fields if needed
             self.nameErrorLabel.isHidden = true

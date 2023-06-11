@@ -98,6 +98,22 @@ class BuddyRepository {
         }
     }
     
+    public func updateBuddy(buddy: Buddy) -> SQLiteResultData<Void> {
+        do {
+            let update = self.buddy.update([
+                name <- buddy.name,
+                language <- buddy.language.rawValue,
+                personality <- buddy.personality.rawValue,
+                personalityOptional <- buddy.personalityOptional.rawValue
+            ])
+            try self.db.run(update)
+            return .success(value: ())
+        } catch {
+            print("!@Error updating buddy: \(error)")
+            return .failure(error: error)
+        }
+    }
+
     private func dropTable() {
         do {
             try self.db.run(buddy.drop(ifExists: true))

@@ -80,12 +80,20 @@ class BuddyViewModel {
         }
     }
     
-    public func updateBuddy() {
-//        print(self.name)
-//        print(self.language)
-//        print(self.personality)
-//        print(self.personalityOptional)
-        print("Opslaan van de gegevens")
+    public func saveBuddy() {
+        if let buddy = self.buddy {
+            let result = self.buddyRepository.updateBuddy(buddy: buddy)
+            switch result {
+            case .success(let buddy):
+                // hier evenuteel returnen dat het succesvol is opgeslagen
+                print(buddy)
+            case .failure(let error):
+                //hier eventueel returnen dat het opslaan is mislukt
+                print("Unable to update buddy \(error)")
+            }
+        } else {
+            // self.buddy is nil
+        }
     }
     
 }

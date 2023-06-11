@@ -34,7 +34,7 @@ struct Buddy {
     var name: String
     var language: LanguageType
     var personality: PersonalityType
-    var personalityOptional: PersonalityType?
+    var personalityOptional: PersonalityType
     
     init(name: String, language: LanguageType, personality: PersonalityType, personalityOptional: PersonalityType) {
         self.name = name
