@@ -29,17 +29,11 @@ class BuddySettingsViewController: UIViewController {
     @IBOutlet weak var personalityErrorLabel: UILabel!
     var personalityPickerView = UIPickerView()
     
-    
-    @IBOutlet weak var behaviourTextView: UITextField!
-    @IBOutlet weak var behaviourOptionalTextView: UITextField!
-    @IBOutlet weak var behaviourErrorLabel: UILabel!
-    var behaviourPickerView = UIPickerView()
-    
     var selectedPersonalityRow: Int?
-    var selectedBehaviourRow: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.title = "About" // change this dynamically
         self.navigationItem.largeTitleDisplayMode = .always
         
@@ -50,23 +44,17 @@ class BuddySettingsViewController: UIViewController {
         self.avatarMessageView.messageBubbleView.messageType = .receiver;
         self.avatarMessageView.avatarMessageText = ""
         
-        self.personalityPickerView.tag = 1
-        self.personalityPickerView.delegate = self
-        self.personalityPickerView.dataSource = self
-        self.personalityTextView.inputView = self.personalityPickerView
-        self.personalityOptionalTextView.inputView = self.personalityPickerView
-        
-        self.languagePickerView.tag = 2
+        self.languagePickerView.tag = 1
         self.languagePickerView.delegate = self
         self.languagePickerView.dataSource = self
         self.languageTextField.inputView = self.languagePickerView
         
-        self.behaviourPickerView.tag = 3
-        self.behaviourPickerView.delegate = self
-        self.behaviourPickerView.dataSource = self
-        self.behaviourTextView.inputView = self.behaviourPickerView
-        self.behaviourOptionalTextView.inputView = self.behaviourPickerView
-        
+        self.personalityPickerView.tag = 2
+        self.personalityPickerView.delegate = self
+        self.personalityPickerView.dataSource = self
+        self.personalityTextView.inputView = self.personalityPickerView
+        self.personalityOptionalTextView.inputView = self.personalityPickerView
+                
         // Register for keyboard and pickerview notifications
         self.registerForKeyboardNotifications()
         self.registerForPickerViewNotifications()
@@ -83,14 +71,24 @@ class BuddySettingsViewController: UIViewController {
         }
     }
     
+    //MARK: Update View Method
+        
     private func updateView() {
         self.avatarMessageView.avatarMessageText = self.viewModel.introductionMessage
         self.navigationItem.title = "About \(String(describing: self.viewModel.nameText))"
+        self.nameTextField.text = self.viewModel.buddy?.name
+        //TODO: Make proper computed property for getting rawvalue and capitalizedSentence
+        self.languageTextField.text = self.viewModel.buddy?.language.rawValue.capitalizedSentence
+        self.personalityTextView.text = self.viewModel.buddy?.personality.rawValue.capitalizedSentence
+        self.personalityOptionalTextView.text = self.viewModel.buddy?.personalityOptional?.rawValue.capitalizedSentence
     }
+    
+    
+    //MARK: Methods
     
     @IBAction func textFieldShouldReturn(_ sender: UITextField) {
         self.saveButton.isEnabled = true
-        self.viewModel.name = self.nameTextField.text
+        self.viewModel.buddy?.name = self.nameTextField.text!
         self.updateView()
     }
     
@@ -103,7 +101,6 @@ class BuddySettingsViewController: UIViewController {
             self.nameErrorLabel.isHidden = true
             self.languageErrorLabel.isHidden = true
             self.personalityErrorLabel.isHidden = true
-            self.behaviourErrorLabel.isHidden = true
         } else {
             for (fieldName, errorMessage) in errorMessages {
                 switch fieldName {
@@ -116,9 +113,6 @@ class BuddySettingsViewController: UIViewController {
                 case "personality":
                     personalityErrorLabel.isHidden = false
                     personalityErrorLabel.text = errorMessage
-                case "behaviour":
-                    behaviourErrorLabel.isHidden = false
-                    behaviourErrorLabel.text = errorMessage
                 default:
                     break
                 }
@@ -164,9 +158,7 @@ class BuddySettingsViewController: UIViewController {
             nameTextField,
             languageTextField,
             personalityTextView,
-            behaviourTextView,
             personalityOptionalTextView,
-            behaviourOptionalTextView
         ]
         
         return textFields.first { $0.isFirstResponder }
@@ -202,11 +194,9 @@ extension BuddySettingsViewController: UIPickerViewDataSource, UIPickerViewDeleg
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
         case 1:
-            return self.viewModel.personalityTypes.count + 1
+            return LanguageType.allValues.count
         case 2:
-            return self.viewModel.languageTypes.count
-        case 3:
-            return self.viewModel.behaviourTypes.count + 1
+            return PersonalityType.allValues.count
         default:
             return 1
         }
@@ -215,19 +205,9 @@ extension BuddySettingsViewController: UIPickerViewDataSource, UIPickerViewDeleg
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
         case 1:
-            if row == 0 {
-                return ""
-            } else {
-                return self.viewModel.personalityTypes[row - 1]
-            }
+            return LanguageType.allValues[row].rawValue.capitalizedSentence
         case 2:
-            return self.viewModel.languageTypes[row]
-        case 3:
-            if row == 0 {
-                return ""
-            } else {
-                return self.viewModel.behaviourTypes[row - 1]
-            }
+            return PersonalityType.allValues[row].rawValue.capitalizedSentence
         default:
             return "Data not found"
         }
@@ -237,48 +217,21 @@ extension BuddySettingsViewController: UIPickerViewDataSource, UIPickerViewDeleg
         self.saveButton.isEnabled = true
         switch pickerView.tag {
         case 1:
+            self.languageTextField.text = LanguageType.allValues[row].rawValue.capitalizedSentence
+            self.viewModel.buddy?.language = LanguageType.allValues[row]
+            self.languageTextField.resignFirstResponder()
+            
+        case 2:
             if self.personalityTextView.isFirstResponder {
-                self.selectedPersonalityRow = row - 1
-                if row == 0 {
-                    self.personalityTextView.text = ""
-                } else {
-                    self.personalityTextView.text = self.viewModel.personalityTypes[row - 1]
-                }
-                self.viewModel.personality = self.viewModel.personalityTypes[row - 1]
+                self.selectedPersonalityRow = row
+                self.personalityTextView.text = PersonalityType.allValues[row].rawValue.capitalizedSentence
+                self.viewModel.buddy?.personality = PersonalityType.allValues[row]
                 self.personalityTextView.resignFirstResponder()
             } else if self.personalityOptionalTextView.isFirstResponder {
-                self.selectedPersonalityRow = row - 1
-                if row == 0 {
-                    self.personalityOptionalTextView.text = ""
-                } else {
-                    self.personalityOptionalTextView.text = self.viewModel.personalityTypes[row - 1]
-                }
-                self.viewModel.personalityOptional = self.viewModel.personalityTypes[row - 1]
+                self.selectedPersonalityRow = row
+                self.personalityOptionalTextView.text = PersonalityType.allValues[row].rawValue.capitalizedSentence
+                self.viewModel.buddy?.personalityOptional = PersonalityType.allValues[row]
                 self.personalityOptionalTextView.resignFirstResponder()
-            }
-        case 2:
-            self.languageTextField.text = self.viewModel.languageTypes[row]
-            self.viewModel.language = self.viewModel.languageTypes[row]
-            self.languageTextField.resignFirstResponder()
-        case 3:
-            if self.behaviourTextView.isFirstResponder {
-                self.selectedBehaviourRow = row - 1
-                if row == 0 {
-                    self.behaviourTextView.text = ""
-                } else {
-                    self.behaviourTextView.text = self.viewModel.behaviourTypes[row - 1]
-                }
-                self.viewModel.behaviour = self.viewModel.behaviourTypes[row - 1]
-                self.behaviourTextView.resignFirstResponder()
-            } else if self.behaviourOptionalTextView.isFirstResponder {
-                self.selectedBehaviourRow = row - 1
-                if row == 0 {
-                    self.behaviourOptionalTextView.text = ""
-                } else {
-                    self.behaviourOptionalTextView.text = self.viewModel.behaviourTypes[row - 1]
-                }
-                self.viewModel.behaviourOptional = self.viewModel.behaviourTypes[row - 1]
-                self.behaviourOptionalTextView.resignFirstResponder()
             }
         default:
             return
