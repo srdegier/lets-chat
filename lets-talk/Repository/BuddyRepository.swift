@@ -67,9 +67,7 @@ class BuddyRepository {
     }
     
     public func getBuddy() -> SQLiteResultData<Buddy> {
-        do {
-            let query = buddy.limit(1) // Ophalen van slechts één rij
-            
+        do {            
             guard let result = try db.pluck(buddy) else {
                 print("Buddy not found")
                 return .failure(error: NSError(domain: "BuddyNotFoundError", code: 0, userInfo: nil))
@@ -93,7 +91,19 @@ class BuddyRepository {
             return .success(value: buddy)
             
         } catch {
-            print("!@Error fetching buddy: \(error)")
+            return .failure(error: error)
+        }
+    }
+    
+    public func getName() -> SQLiteResultData<String> {
+        do {
+            let query = buddy.select(name)
+            guard let row = try db.pluck(query) else {
+                return .failure(error: NSError(domain: "BuddyNotFoundError", code: 0, userInfo: nil))
+            }
+            let name = row[name]
+            return .success(value: name)
+        } catch {
             return .failure(error: error)
         }
     }
