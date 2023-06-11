@@ -27,6 +27,12 @@ class SettingsViewController: UIViewController {
         self.navigationItem.largeTitleDisplayMode = .always
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // if there are any updates for the "About buddy"
+        self.viewModel.getBuddyName()
+        self.settingsTableView.reloadData()
+    }
+        
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {

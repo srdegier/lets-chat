@@ -46,6 +46,7 @@ class AvatarMessageView: UIView {
         addSubview(view)
         self.avatarMessageViewContainerHeightConstraint.constant = 0
         self.messageBubbleView.alpha = 0
+        self.avatarAnimationView.alpha = 0
         self.messageBubbleView.isTailFlipped = true
     }
     
@@ -54,6 +55,7 @@ class AvatarMessageView: UIView {
     public func revealAnimation(completion: (() -> Void)? = nil) -> Void {
         UIView.animate(withDuration: 1.0, animations: {
             self.avatarMessageViewContainerHeightConstraint.constant = 200
+            self.avatarAnimationView.alpha = 1
             self.contentMode = .top
             self.superview?.layoutIfNeeded()
         }) { (_) in
