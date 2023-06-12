@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NEs-wr-26S">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -22,7 +22,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OSa-Um-0N6">
-                                <rect key="frame" x="0.0" y="274" width="375" height="369"/>
+                                <rect key="frame" x="0.0" y="274" width="375" height="504"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="Jl2-Rn-pd0">
                                     <size key="itemSize" width="324" height="107"/>
@@ -68,43 +68,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzT-l2-PAA">
-                                <rect key="frame" x="0.0" y="643" width="375" height="135"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a1v-pS-ZRM">
-                                        <rect key="frame" x="100" y="50" width="175" height="35"/>
-                                        <color key="tintColor" systemColor="tintColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Delete Chat">
-                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="didTapDeleteButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cxt-GK-HCv"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="a1v-pS-ZRM" firstAttribute="top" secondItem="zzT-l2-PAA" secondAttribute="top" constant="50" id="5Tl-bR-LxX"/>
-                                    <constraint firstAttribute="trailing" secondItem="a1v-pS-ZRM" secondAttribute="trailing" constant="100" id="efw-T1-Plb"/>
-                                    <constraint firstItem="a1v-pS-ZRM" firstAttribute="leading" secondItem="zzT-l2-PAA" secondAttribute="leading" constant="100" id="i5h-is-t5w"/>
-                                    <constraint firstAttribute="bottom" secondItem="a1v-pS-ZRM" secondAttribute="bottom" constant="50" id="shM-Fw-nC1"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cpo-3W-bWg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cpo-3W-bWg" firstAttribute="bottom" secondItem="zzT-l2-PAA" secondAttribute="bottom" id="0bK-GA-e0M"/>
                             <constraint firstItem="G8T-bD-tiq" firstAttribute="leading" secondItem="axL-Qw-Kda" secondAttribute="leading" id="8Ag-Tc-3l7"/>
                             <constraint firstItem="OSa-Um-0N6" firstAttribute="leading" secondItem="axL-Qw-Kda" secondAttribute="leading" id="DpQ-IG-pit"/>
                             <constraint firstAttribute="trailing" secondItem="G8T-bD-tiq" secondAttribute="trailing" id="HqZ-3f-SzQ"/>
                             <constraint firstItem="G8T-bD-tiq" firstAttribute="top" secondItem="cpo-3W-bWg" secondAttribute="top" id="Vh6-ud-49A"/>
-                            <constraint firstItem="zzT-l2-PAA" firstAttribute="leading" secondItem="cpo-3W-bWg" secondAttribute="leading" id="W0R-yw-S7C"/>
+                            <constraint firstItem="cpo-3W-bWg" firstAttribute="bottom" secondItem="OSa-Um-0N6" secondAttribute="bottom" id="byY-LN-jzv"/>
                             <constraint firstAttribute="trailing" secondItem="OSa-Um-0N6" secondAttribute="trailing" id="lMH-zN-zDy"/>
                             <constraint firstItem="OSa-Um-0N6" firstAttribute="top" secondItem="G8T-bD-tiq" secondAttribute="bottom" id="nra-2B-KWg"/>
-                            <constraint firstItem="zzT-l2-PAA" firstAttribute="top" secondItem="OSa-Um-0N6" secondAttribute="bottom" id="xIB-ol-QZ5"/>
-                            <constraint firstItem="cpo-3W-bWg" firstAttribute="trailing" secondItem="zzT-l2-PAA" secondAttribute="trailing" id="yov-vc-Ste"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="etR-ye-J2Z"/>
@@ -146,12 +120,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

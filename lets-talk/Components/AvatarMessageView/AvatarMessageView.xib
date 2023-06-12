@@ -46,7 +46,6 @@
                         <constraint firstItem="MLd-nM-dHP" firstAttribute="leading" secondItem="Wpk-Sl-jop" secondAttribute="leading" constant="120" id="MIP-nv-fuY"/>
                         <constraint firstItem="Up8-NA-MiM" firstAttribute="leading" secondItem="Wpk-Sl-jop" secondAttribute="leading" priority="750" constant="-10" id="iKe-QN-g0Y"/>
                         <constraint firstItem="Up8-NA-MiM" firstAttribute="centerX" secondItem="Wpk-Sl-jop" secondAttribute="centerX" id="owY-5m-zN7"/>
-                        <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="Up8-NA-MiM" secondAttribute="bottom" constant="10" id="sm6-x3-Zsg"/>
                         <constraint firstAttribute="height" constant="210" id="zLV-s6-cEd"/>
                         <constraint firstItem="MLd-nM-dHP" firstAttribute="top" secondItem="Wpk-Sl-jop" secondAttribute="top" constant="50" id="zaB-7x-tTh"/>
                     </constraints>

@@ -83,5 +83,17 @@ class MessageRepository {
         
         return fetchedMessages.reversed()
     }
+    
+    public func deleteMessages() -> Void {
+        self.dropTable()
+    }
+    
+    private func dropTable() {
+        do {
+            try self.db.run(messages.drop(ifExists: true))
+        } catch {
+            print("!@Error messages table: \(error)")
+        }
+    }
 
 }
