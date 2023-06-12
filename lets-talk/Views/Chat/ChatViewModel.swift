@@ -25,6 +25,7 @@ class ChatViewModel {
     private var hasSolution: Bool? = false
     private var preparedChatMessages: [ChatMessage]?
     public var respondMessage: String?
+    public var openAIServiceError: Bool = false
 
     // MARK: Computed Properties
     
@@ -48,11 +49,11 @@ class ChatViewModel {
         return self.buddy.language.rawValue
     }
     
-    private var buddyPeronality: String {
+    private var buddyPersonality: String {
         return self.buddy.personality.rawValue
     }
     
-    private var buddyPeronalityOptional: String {
+    private var buddyPersonalityOptional: String {
         return self.buddy.personalityOptional.rawValue
     }
     
@@ -62,13 +63,14 @@ class ChatViewModel {
         }
     }
     
-    private var systemMessage: String {
-        return "Act as a real friend which try to understand and has empathy You wil not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: \(self.buddyName) Their name is: \(self.profileName) Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
-    }
+//    private var systemMessage: String {
+//        return "Act as a real friend which try to understand and has empathy You wil not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: \(self.buddyName) Their name is: \(self.profileName) Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
+//    }
 
+    private var systemMessage: String {
+        return "Act as a real friend which is \(self.buddyPersonality) and \(self.buddyPersonalityOptional). You will not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: \(self.buddyName). Their name is: \(self.profileName). Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
+    }
     public var initialMessage: String {
-        print(buddyName)
-        print(buddyLanguage)
         return "Hello \(self.profileName), how are your doing today?"
     }
     
@@ -90,7 +92,6 @@ class ChatViewModel {
     }
     
     private func getBuddy() -> Buddy {
-        print("GETBUDDY")
         let result = self.buddyRepository.getBuddy()
         switch result {
         case .success(let buddy):
@@ -138,9 +139,11 @@ class ChatViewModel {
         // Fetch new response
         if (self.preparedChatMessages != nil) {
             await self.fetchRespondMessage()
-            self.messageText = self.respondMessage
-            self.messageType = .receiver
-            self.saveNewMessage()
+            if !self.openAIServiceError {
+                self.messageText = self.respondMessage
+                self.messageType = .receiver
+                self.saveNewMessage()
+            }
         }
     }
     
@@ -186,12 +189,12 @@ class ChatViewModel {
                 // Handle the successful response
                 if let messageContent = respondMessage.choices?.first?.message.content {
                     self.respondMessage = messageContent
-                    print("Respond Message:", messageContent)
                 }
                 // Save the new respond in the messageRepo
                 // Place the new respond message in the messages datasource
             case .failure(let error):
                 // Handle the error
+                self.openAIServiceError = true
                 print("Error:", error)
             }
         }
