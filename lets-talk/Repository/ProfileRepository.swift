@@ -76,4 +76,18 @@ class ProfileRepository {
         }
     }
     
+    public func updateProfile(profile: Profile) -> SQLiteResultData<Void> {
+        do {
+            let update = self.profile.update([
+                name <- profile.name,
+                age <- profile.age,
+            ])
+            try self.db.run(update)
+            return .success(value: ())
+        } catch {
+            print("!@Error updating profile: \(error)")
+            return .failure(error: error)
+        }
+    }
+    
 }

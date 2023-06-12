@@ -49,7 +49,7 @@ class ProfileSettingsViewController: UIViewController, UITextFieldDelegate {
     @objc private func didTapSaveButton() {
         let errorMessages = self.viewModel.validateFields()
         if errorMessages.isEmpty {
-            //self.viewModel.saveProfile()
+            self.viewModel.saveProfile()
             self.saveButton.isEnabled = false
             //reset error fields if needed
             self.nameErrorLabel.isHidden = true
@@ -74,9 +74,10 @@ class ProfileSettingsViewController: UIViewController, UITextFieldDelegate {
         if textField == self.nameTextField, let name = textField.text {
             print(name)
             self.viewModel.profile?.name = name
-        } else if textField == self.ageTextField, let ageString = textField.text, let age = Int(ageString) {
-            self.viewModel.profile?.age = Int64(age)
+        } else if textField == self.ageTextField, let ageString = textField.text, let age = Int64(ageString) {
+            self.viewModel.profile?.age = age
         }
+
         self.saveButton.isEnabled = true
         self.updateView()
     }

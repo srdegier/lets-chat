@@ -23,7 +23,7 @@ class ProfileViewModel {
     
     public func validateFields() -> [String: String] {
         var errorMessages: [String: String] = [:]
-        if (self.profile?.name) == nil {
+        if let name = self.profile?.name, name.isEmpty {
             print("error")
             errorMessages["name"] = "Name field is required"
         }
@@ -43,6 +43,22 @@ class ProfileViewModel {
         case .failure(let error):
             self.profile = Profile(name: "Unknown", age: 1)
             print("Unable to get buddy \(error)")
+        }
+    }
+    
+    public func saveProfile() {
+        if let profile = self.profile {
+            let result = self.profileRepository.updateProfile(profile: profile)
+            switch result {
+            case .success(let buddy):
+                // hier evenuteel returnen dat het succesvol is opgeslagen
+                print(buddy)
+            case .failure(let error):
+                //hier eventueel returnen dat het opslaan is mislukt
+                print("Unable to update profile \(error)")
+            }
+        } else {
+            // self.profile is nil
         }
     }
 }
