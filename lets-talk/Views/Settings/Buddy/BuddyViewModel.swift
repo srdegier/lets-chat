@@ -38,7 +38,7 @@ class BuddyViewModel {
     
     private var personalityText: String {
         if let personality = self.buddy?.personality {
-            if let personalityOptional = self.buddy?.personalityOptional {
+            if let personalityOptional = self.buddy?.personalityOptional, personalityOptional != PersonalityType.none {
                 return "My personality is \(personality.rawValue) and \(personalityOptional.rawValue)."
             } else {
                 return "My personality is \(personality.rawValue)."
@@ -47,7 +47,7 @@ class BuddyViewModel {
             return "My personality is [personality]."
         }
     }
-    
+
     public func validateFields() -> [String: String] {
         var errorMessages: [String: String] = [:]
         if let name = self.buddy?.name, name.isEmpty {
