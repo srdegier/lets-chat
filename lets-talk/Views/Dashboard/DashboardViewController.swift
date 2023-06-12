@@ -53,11 +53,7 @@ class DashboardViewController: UIViewController {
     private func updateView() {
         self.avatarMessageView.avatarMessageText = self.viewModel.avatarMessage
     }
-    
-    @IBAction func didTapDeleteButton(_ sender: Any) {
-        SQLiteDatabaseManager.shared.deleteDatabase()
-    }
-    
+        
     @objc func didTapSettingsButton() {
         guard let vc = ViewControllerFactory.settingsViewController() else { return }
         self.navigationController?.pushViewController(vc, animated: true)

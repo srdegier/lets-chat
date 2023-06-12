@@ -29,6 +29,7 @@
 		873C230E2A367716004F6B56 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C230D2A367716004F6B56 /* ProfileViewModel.swift */; };
 		873C23102A367CE2004F6B56 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C230F2A367CE2004F6B56 /* Profile.swift */; };
 		873C23122A37323B004F6B56 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C23112A37323B004F6B56 /* ProfileRepository.swift */; };
+		873C23142A375739004F6B56 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C23132A375739004F6B56 /* HistoryViewModel.swift */; };
 		8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */; };
 		8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8750C39C29F5BBAE002DE176 /* Chat.storyboard */; };
 		8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39E29F5BBD3002DE176 /* ChatViewController.swift */; };
@@ -95,6 +96,7 @@
 		873C230D2A367716004F6B56 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		873C230F2A367CE2004F6B56 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		873C23112A37323B004F6B56 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		873C23132A375739004F6B56 /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCollectionViewCell.swift; sourceTree = "<group>"; };
 		8750C39C29F5BBAE002DE176 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		8750C39E29F5BBD3002DE176 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				873C22FF2A2E853C004F6B56 /* HistorySettingsViewController.swift */,
+				873C23132A375739004F6B56 /* HistoryViewModel.swift */,
 				873C23012A2E85BB004F6B56 /* HistorySettings.storyboard */,
 			);
 			path = History;
@@ -581,6 +584,7 @@
 				8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */,
 				873C23082A360AEE004F6B56 /* Buddy.swift in Sources */,
 				877AB0E72A24BDF4000F6201 /* Config.swift in Sources */,
+				873C23142A375739004F6B56 /* HistoryViewModel.swift in Sources */,
 				877AB5AC2A1A3BB3002B21D7 /* SQLiteDatabaseManager.swift in Sources */,
 				873C22F12A2E29BA004F6B56 /* Section.swift in Sources */,
 				87D9551329F2F1B80054FF4A /* DashboardViewModel.swift in Sources */,
