@@ -76,6 +76,19 @@ class ProfileRepository {
         }
     }
     
+    public func getName() -> SQLiteResultData<String> {
+        do {
+            let query = profile.select(name)
+            guard let row = try db.pluck(query) else {
+                return .failure(error: NSError(domain: "BuddyNotFoundError", code: 0, userInfo: nil))
+            }
+            let name = row[name]
+            return .success(value: name)
+        } catch {
+            return .failure(error: error)
+        }
+    }
+    
     public func updateProfile(profile: Profile) -> SQLiteResultData<Void> {
         do {
             let update = self.profile.update([

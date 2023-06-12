@@ -42,6 +42,18 @@ class DashboardViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        // if there are any updates for the "profile name"
+        self.viewModel.getProfileName()
+        self.updateView()
+    }
+    
+    // MARK: Methods
+    
+    private func updateView() {
+        self.avatarMessageView.avatarMessageText = self.viewModel.avatarMessage
+    }
+    
     @IBAction func didTapDeleteButton(_ sender: Any) {
         SQLiteDatabaseManager.shared.deleteDatabase()
     }
