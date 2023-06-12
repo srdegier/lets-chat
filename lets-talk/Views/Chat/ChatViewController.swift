@@ -38,7 +38,7 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         self.chatView.chatCollectionViewDelegate = self.chatViewDelegate
         
         self.avatarMessageView.messageBubbleView.messageType = .receiver
-        self.avatarMessageView.avatarMessageText = "Hoi Stefan, hoe is het met je vandaag?"
+        self.avatarMessageView.avatarMessageText = self.viewModel.initialMessage
         
     }
     

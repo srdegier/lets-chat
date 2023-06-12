@@ -12,32 +12,94 @@ import OpenAISwift
 class ChatViewModel {
     
     let messageRepository = MessageRepository()
+    let profileRepository = ProfileRepository()
+    let buddyRepository = BuddyRepository()
     let openAIService = OpenAIService()
     
     // MARK: Properties
     
-    var messages: [Message] = [
-//        Message(message: "If you see this messages the messages has failed to be load", type: .receiver),
-    ]
-    var newMessagesCount: Int = 20
-    var messageID: Int64?
-    var messageText: String? {
+    public var messages: [Message] = []
+    public var newMessagesCount: Int = 20
+    private var messageID: Int64?
+    public var messageType: MessageType?
+    private var hasSolution: Bool? = false
+    private var preparedChatMessages: [ChatMessage]?
+    public var respondMessage: String?
+
+    // MARK: Computed Properties
+    
+    private var profileName: String {
+        return self.getProfileName()
+    }
+    
+    private lazy var cachedBuddy: Buddy = {
+        return self.getBuddy()
+    }()
+
+    private var buddy: Buddy {
+        return self.cachedBuddy
+    }
+    
+    private var buddyName: String {
+        return self.buddy.name
+    }
+    
+    private var buddyLanguage: String {
+        return self.buddy.language.rawValue
+    }
+    
+    private var buddyPeronality: String {
+        return self.buddy.personality.rawValue
+    }
+    
+    private var buddyPeronalityOptional: String {
+        return self.buddy.personalityOptional.rawValue
+    }
+    
+    public var messageText: String? {
         didSet {
             self.messageText = messageText?.trimmingCharacters(in: .whitespacesAndNewlines)
         }
     }
-    var messageType: MessageType?
-    var hasSolution: Bool? = false
     
-    var preparedChatMessages: [ChatMessage]?
-    let systemMessage: String = "Act as a real friend which try to understand and has empathy You wil not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: Flora Their name is: Stefan Your language is: Dutch. Max words in your response: 60. Use sometimes emoji's"
-    var respondMessage: String?
+    private var systemMessage: String {
+        return "Act as a real friend which try to understand and has empathy You wil not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: \(self.buddyName) Their name is: \(self.profileName) Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
+    }
+
+    public var initialMessage: String {
+        print(buddyName)
+        print(buddyLanguage)
+        return "Hello \(self.profileName), how are your doing today?"
+    }
     
     init() {
         self.fetchMessages()
     }
         
-    // MARK: Methods
+    //MARK: Methods
+    
+    private func getProfileName() -> String {
+        let result = self.profileRepository.getName()
+        switch result {
+        case .success(let name):
+            return name
+        case .failure(let error):
+            print("Unable to get buddy \(error)")
+            return "Unknown"
+        }
+    }
+    
+    private func getBuddy() -> Buddy {
+        print("GETBUDDY")
+        let result = self.buddyRepository.getBuddy()
+        switch result {
+        case .success(let buddy):
+            return buddy
+        case .failure(let error):
+            print("Unable to get buddy \(error)")
+            return Buddy(name: "Unknown", language: .none, personality: .none, personalityOptional: .none)
+        }
+    }
     
     public func saveNewMessage() {
         guard let messageText = self.messageText, let messageType = self.messageType, let hasSolution = self.hasSolution else {
