@@ -40,7 +40,7 @@ class ChatViewModel {
         return self.cachedBuddy
     }
     
-    private var buddyName: String {
+    public var buddyName: String {
         return self.buddy.name
     }
     
