@@ -28,6 +28,7 @@
 		873C230B2A3615EE004F6B56 /* String+capitalizedSentece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C230A2A3615EE004F6B56 /* String+capitalizedSentece.swift */; };
 		873C230E2A367716004F6B56 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C230D2A367716004F6B56 /* ProfileViewModel.swift */; };
 		873C23102A367CE2004F6B56 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C230F2A367CE2004F6B56 /* Profile.swift */; };
+		873C23122A37323B004F6B56 /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 873C23112A37323B004F6B56 /* ProfileRepository.swift */; };
 		8750C39929F5AE60002DE176 /* NavigationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */; };
 		8750C39D29F5BBAE002DE176 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8750C39C29F5BBAE002DE176 /* Chat.storyboard */; };
 		8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8750C39E29F5BBD3002DE176 /* ChatViewController.swift */; };
@@ -93,6 +94,7 @@
 		873C230A2A3615EE004F6B56 /* String+capitalizedSentece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+capitalizedSentece.swift"; sourceTree = "<group>"; };
 		873C230D2A367716004F6B56 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		873C230F2A367CE2004F6B56 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		873C23112A37323B004F6B56 /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		8750C39829F5AE60002DE176 /* NavigationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCollectionViewCell.swift; sourceTree = "<group>"; };
 		8750C39C29F5BBAE002DE176 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		8750C39E29F5BBD3002DE176 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 			children = (
 				877AB5A92A1A3A62002B21D7 /* MessageRepository.swift */,
 				873C23052A360004004F6B56 /* BuddyRepository.swift */,
+				873C23112A37323B004F6B56 /* ProfileRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -602,6 +605,7 @@
 				877AB0DB2A23AC55000F6201 /* OpenAIService.swift in Sources */,
 				879DCC5E2A29418200064AD1 /* HapticFeedbackManagers.swift in Sources */,
 				873C22E02A2BCF21004F6B56 /* SettingsViewController.swift in Sources */,
+				873C23122A37323B004F6B56 /* ProfileRepository.swift in Sources */,
 				873C230E2A367716004F6B56 /* ProfileViewModel.swift in Sources */,
 				877AB5B62A1C1365002B21D7 /* ChatCollectionView.swift in Sources */,
 				877AB5AA2A1A3A62002B21D7 /* MessageRepository.swift in Sources */,

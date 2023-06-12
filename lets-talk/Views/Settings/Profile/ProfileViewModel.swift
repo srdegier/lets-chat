@@ -8,12 +8,16 @@
 import Foundation
 
 class ProfileViewModel {
-//    let profileRepository = ProfileRepository()
+    let profileRepository = ProfileRepository()
 
     // MARK: - Properties
     public var profile: Profile?
     
     // MARK: - Computed Properties
+    
+    init() {
+        getProfile()
+    }
     
     // MARK: - Methods
     
@@ -29,5 +33,16 @@ class ProfileViewModel {
         }
 
         return errorMessages
+    }
+    
+    public func getProfile() -> Void {
+        let result = self.profileRepository.getProfile()
+        switch result {
+        case .success(let profile):
+            self.profile = profile
+        case .failure(let error):
+            self.profile = Profile(name: "Unknown", age: 1)
+            print("Unable to get buddy \(error)")
+        }
     }
 }

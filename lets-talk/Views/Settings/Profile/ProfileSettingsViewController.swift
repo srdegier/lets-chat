@@ -31,8 +31,20 @@ class ProfileSettingsViewController: UIViewController, UITextFieldDelegate {
         self.nameTextField.delegate = self
         self.ageTextField.delegate = self
         addDoneButtonOnNumpad(textField: self.ageTextField)
-
+        self.updateView()
     }
+    
+    //MARK: - Update View
+    
+    private func updateView() {
+        self.navigationItem.title = "About \(self.viewModel.profile?.name ?? "You")"
+        self.nameTextField.text = self.viewModel.profile?.name
+        if let age = self.viewModel.profile?.age {
+            self.ageTextField.text = String(age)
+        }
+    }
+    
+    //MARK: - Methods
     
     @objc private func didTapSaveButton() {
         let errorMessages = self.viewModel.validateFields()
@@ -66,6 +78,7 @@ class ProfileSettingsViewController: UIViewController, UITextFieldDelegate {
             self.viewModel.profile?.age = Int64(age)
         }
         self.saveButton.isEnabled = true
+        self.updateView()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
