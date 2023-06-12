@@ -8,6 +8,11 @@
 import Foundation
 import SQLite
 
+enum SQLiteResultData<T> {
+    case success(value: T)
+    case failure(error: Error)
+}
+
 class SQLiteDatabaseManager {
     
     static let shared = SQLiteDatabaseManager()
