@@ -24,11 +24,9 @@ class ProfileViewModel {
     public func validateFields() -> [String: String] {
         var errorMessages: [String: String] = [:]
         if let name = self.profile?.name, name.isEmpty {
-            print("error")
             errorMessages["name"] = "Name field is required"
         }
         if (self.profile?.age) == nil {
-            print("error")
             errorMessages["age"] = "Age field is required"
         }
 

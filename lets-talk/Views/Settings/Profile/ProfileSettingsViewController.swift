@@ -72,7 +72,6 @@ class ProfileSettingsViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == self.nameTextField, let name = textField.text {
-            print(name)
             self.viewModel.profile?.name = name
         } else if textField == self.ageTextField, let ageString = textField.text, let age = Int64(ageString) {
             self.viewModel.profile?.age = age
