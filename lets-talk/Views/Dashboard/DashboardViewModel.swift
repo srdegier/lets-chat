@@ -7,60 +7,73 @@
 
 import Foundation
 
-enum DashboardComponentType {
-    case chat
-    case solutions
-}
-
 class DashboardViewModel {
     
+    let profileRepository = ProfileRepository()
+    
     // MARK: - Properties
+    private var profileName: String?
     
-    public let dashboardComponentTypes: [DashboardComponentType]
-    
+    // MARK: - Computed Properties
     public var avatarMessage: String {
-        return "Good evening Stefan!"
+        let timeOfDay = getTimeOfDay()
+        return "Good \(timeOfDay) \(self.profileName ?? "Unknown")!"
     }
 
-    // MARK: - Initialization
+    private lazy var currentTime: Date = {
+        return Date()
+    }()
 
-    init(dashboardComponentTypes: [DashboardComponentType]) {
-       self.dashboardComponentTypes = dashboardComponentTypes
+    private lazy var currentCalendar: Calendar = {
+        return Calendar.current
+    }()
+
+    private func getTimeOfDay() -> String {
+        let hour = currentCalendar.component(.hour, from: currentTime)
+
+        if hour < 12 {
+            return "morning"
+        } else if hour < 17 {
+            return "afternoon"
+        } else {
+            return "evening"
+        }
     }
-       
     
     // MARK: - Data Source
+    private var dashboardComponentOptions: [DashboardComponentOption] {
+        return [
+            DashboardComponentOption(title: "Chat", viewControllerType: .chat, imageSource: "typing-2", contentMode: .scaleAspectFit),
+            DashboardComponentOption(title: "Settings", viewControllerType: .settings, imageSource: "settings", contentMode: .scaleAspectFit)
+        ]
+    }
     
     public func numberOfSections() -> Int {
         return 1
     }
     
     public func numberOfRowsInSection(_ section: Int) -> Int {
-        return dashboardComponentTypes.count
+        return self.dashboardComponentOptions.count
     }
     
-    public func titleForIndexPath(_ indexPath: IndexPath) -> String? {
-        guard indexPath.row < dashboardComponentTypes.count else {
+    public func dashboardComponentOptionForIndexPath(_ indexPath: IndexPath) -> DashboardComponentOption? {
+        guard indexPath.row < dashboardComponentOptions.count else {
             return nil
         }
-        switch dashboardComponentTypes[indexPath.row] {
-        case .chat:
-            return "Chat 💬"
-        case .solutions:
-            return "Solutions 💡"
-        }
+        return self.dashboardComponentOptions[indexPath.row]
     }
     
-    public func messageComponentTypeForIndexPath(_ indexPath: IndexPath) -> DashboardComponentType? {
-        guard indexPath.row < dashboardComponentTypes.count else {
-            return nil
-        }
-        
-        return dashboardComponentTypes[indexPath.row]
-    }
+    //MARK: Methods
     
-//    func someViewModel() -> SomeViewModel? {
-//        return SomeViewModel()
-//    }
+    public func getProfileName() -> Void {
+        let result = self.profileRepository.getName()
+        switch result {
+        case .success(let name):
+            self.profileName = name
+        case .failure(let error):
+            print("Unable to get buddy \(error)")
+            self.profileName = "Unknown"
+        }
+    }
 
 }

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--History Settings View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="HistorySettingsStoryboard" id="Y6W-OH-hqX" customClass="HistorySettingsViewController" customModule="lets_talk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hS8-Y2-WwQ">
+                                <rect key="frame" x="0.0" y="140" width="375" height="638"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fj2-JX-IFA">
+                                        <rect key="frame" x="20" y="50" width="335" height="120"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OlY-za-Jdm">
+                                                <rect key="frame" x="15" y="10" width="305" height="100"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="2ku-bi-QMd"/>
+                                                </constraints>
+                                                <string key="text">Do you want to start fresh with your buddy? You have the option to delete your chat history, which will remove it from your device.</string>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="OlY-za-Jdm" secondAttribute="trailing" constant="15" id="C6u-Ee-lL3"/>
+                                            <constraint firstItem="OlY-za-Jdm" firstAttribute="top" secondItem="Fj2-JX-IFA" secondAttribute="top" constant="10" id="Dru-Sj-iKz"/>
+                                            <constraint firstItem="OlY-za-Jdm" firstAttribute="leading" secondItem="Fj2-JX-IFA" secondAttribute="leading" constant="15" id="RNH-lM-ylL"/>
+                                            <constraint firstAttribute="bottom" secondItem="OlY-za-Jdm" secondAttribute="bottom" constant="10" id="jpw-O7-j1c"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SY2-2u-8yN">
+                                        <rect key="frame" x="35" y="200" width="305" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Delete Chat">
+                                            <color key="baseBackgroundColor" systemColor="systemRedColor"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="didTapDeleteButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="XML-0n-8fc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SY2-2u-8yN" secondAttribute="trailing" constant="35" id="QCx-qG-bC2"/>
+                                    <constraint firstItem="SY2-2u-8yN" firstAttribute="top" secondItem="Fj2-JX-IFA" secondAttribute="bottom" constant="30" id="d7y-VW-eao"/>
+                                    <constraint firstAttribute="trailing" secondItem="Fj2-JX-IFA" secondAttribute="trailing" constant="20" id="fw5-Wf-etc"/>
+                                    <constraint firstItem="Fj2-JX-IFA" firstAttribute="top" secondItem="hS8-Y2-WwQ" secondAttribute="top" constant="50" id="q6M-6h-Q9B"/>
+                                    <constraint firstItem="Fj2-JX-IFA" firstAttribute="leading" secondItem="hS8-Y2-WwQ" secondAttribute="leading" constant="20" id="tq5-Bm-6A5"/>
+                                    <constraint firstItem="SY2-2u-8yN" firstAttribute="leading" secondItem="hS8-Y2-WwQ" secondAttribute="leading" constant="35" id="zqP-xQ-Hx8"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hS8-Y2-WwQ" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="Chv-ud-8WR"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="leading" secondItem="hS8-Y2-WwQ" secondAttribute="leading" id="ULO-S2-e2R"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hS8-Y2-WwQ" secondAttribute="bottom" id="lUb-sp-B7A"/>
+                            <constraint firstItem="hS8-Y2-WwQ" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="140" id="xPb-Lu-vOh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="contextView" destination="Fj2-JX-IFA" id="w9e-Z8-Drx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.80000000000000004" y="4.4334975369458132"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

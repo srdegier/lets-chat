@@ -23,8 +23,8 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = "Chat"
-        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.title = self.viewModel.buddyName
+        self.navigationItem.largeTitleDisplayMode = .never
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -38,14 +38,14 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         self.chatView.chatCollectionViewDelegate = self.chatViewDelegate
         
         self.avatarMessageView.messageBubbleView.messageType = .receiver
-        self.avatarMessageView.avatarMessageText = "Hoi Stefan, hoe is het met je vandaag?"
-        
+        self.avatarMessageView.avatarMessageText = self.viewModel.initialMessage
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.avatarMessageView.revealAnimation()
-        self.avatarMessageView.slideAvatarViewAnimation() {
-            self.avatarMessageView.revealMessageAnimation()
+        self.avatarMessageView.revealAnimation() {
+            self.avatarMessageView.slideAvatarViewAnimation() {
+                self.avatarMessageView.revealMessageAnimation()
+            }
         }
     }
     
@@ -80,12 +80,17 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
                 self.avatarMessageView.changeAnimation(fileName: "chatting")
                 
                 await self.sendRespondMessage()
-                self.avatarMessageView.avatarMessageText = self.viewModel.respondMessage
-                self.avatarMessageView.changeAnimation(fileName: "avatar-2")
+                if self.viewModel.openAIServiceError {
+                    self.showErrorAlert()
+                } else {
+                    self.avatarMessageView.avatarMessageText = self.viewModel.respondMessage
+                }
+
+                self.avatarMessageView.changeAnimation(fileName: "avatar-final")
                 self.avatarMessageView.slideAvatarViewAnimation() {
                     self.avatarMessageView.revealMessageAnimation()
+                    self.chatView.chatInputView.sendButtonisEnabled = true
                 }
-                self.chatView.chatInputView.sendButtonisEnabled = true
             }
         }
 
@@ -104,4 +109,16 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
     private func sendRespondMessage() async {
         await self.viewModel.addNewRespondMessage()
     }
+    
+    private func showErrorAlert() {
+        let alert = UIAlertController(title: "Error",
+                                      message: "The messages could not be retrieved. Please try again later.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: { _ in
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+
 }

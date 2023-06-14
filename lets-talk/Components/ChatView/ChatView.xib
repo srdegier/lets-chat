@@ -2,7 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,12 +20,19 @@
             <rect key="frame" x="0.0" y="0.0" width="394" height="733"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9Y-qy-vmm">
+                    <rect key="frame" x="0.0" y="59" width="394" height="1"/>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="owF-oO-iXw"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yXv-95-jZ5">
-                    <rect key="frame" x="0.0" y="0.0" width="394" height="733"/>
+                    <rect key="frame" x="0.0" y="60" width="394" height="673"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cj9-Gp-biM" customClass="ChatCollectionView" customModule="lets_talk" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="394" height="585"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="frame" x="0.0" y="0.0" width="394" height="535"/>
+                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IG4-DM-9bh">
                                 <size key="itemSize" width="128" height="128"/>
                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -33,34 +41,45 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="jKb-vD-we9" customClass="ChatInputView" customModule="lets_talk" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="585" width="394" height="128"/>
+                            <rect key="frame" x="0.0" y="535" width="394" height="128"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="jKb-vD-we9" firstAttribute="top" secondItem="cj9-Gp-biM" secondAttribute="bottom" id="39C-gb-cQL"/>
                         <constraint firstItem="jKb-vD-we9" firstAttribute="leading" secondItem="yXv-95-jZ5" secondAttribute="leading" id="3Qc-oM-yul"/>
                         <constraint firstItem="cj9-Gp-biM" firstAttribute="leading" secondItem="yXv-95-jZ5" secondAttribute="leading" id="GoC-MF-GaD"/>
                         <constraint firstAttribute="trailing" secondItem="jKb-vD-we9" secondAttribute="trailing" id="Kuf-V1-GXz"/>
                         <constraint firstAttribute="trailing" secondItem="cj9-Gp-biM" secondAttribute="trailing" id="Tdm-TL-rOs"/>
-                        <constraint firstAttribute="bottom" secondItem="jKb-vD-we9" secondAttribute="bottom" constant="20" id="Xon-D5-wmA"/>
+                        <constraint firstAttribute="bottom" secondItem="jKb-vD-we9" secondAttribute="bottom" constant="10" id="Xon-D5-wmA"/>
                         <constraint firstItem="cj9-Gp-biM" firstAttribute="top" secondItem="yXv-95-jZ5" secondAttribute="top" id="hT1-Ug-ylI"/>
                     </constraints>
                 </view>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="AEE-ja-NTh"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="c9Y-qy-vmm" firstAttribute="top" secondItem="AEE-ja-NTh" secondAttribute="top" id="2kj-7q-IyH"/>
                 <constraint firstAttribute="bottom" secondItem="yXv-95-jZ5" secondAttribute="bottom" id="AZQ-HA-UAa"/>
-                <constraint firstItem="yXv-95-jZ5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AnX-1X-jIJ"/>
+                <constraint firstItem="AEE-ja-NTh" firstAttribute="trailing" secondItem="c9Y-qy-vmm" secondAttribute="trailing" id="BKk-Tu-Fmn"/>
                 <constraint firstItem="yXv-95-jZ5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="LM9-2y-uTq"/>
                 <constraint firstAttribute="trailing" secondItem="yXv-95-jZ5" secondAttribute="trailing" id="LyE-JT-ff1"/>
+                <constraint firstItem="yXv-95-jZ5" firstAttribute="leading" secondItem="AEE-ja-NTh" secondAttribute="leading" id="P5i-7g-6bX"/>
+                <constraint firstItem="c9Y-qy-vmm" firstAttribute="leading" secondItem="AEE-ja-NTh" secondAttribute="leading" id="m27-rh-8Jy"/>
+                <constraint firstItem="yXv-95-jZ5" firstAttribute="top" secondItem="c9Y-qy-vmm" secondAttribute="bottom" id="vsg-2y-6a9"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.40458015267174" y="-21.47887323943662"/>
         </view>
     </objects>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

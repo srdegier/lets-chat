@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21701"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -10,6 +11,7 @@
             <connections>
                 <outlet property="AvatarAnimationView" destination="Up8-NA-MiM" id="oQA-Ih-jau"/>
                 <outlet property="avatarAnimationViewXConstraint" destination="owY-5m-zN7" id="E7K-aU-5b8"/>
+                <outlet property="avatarMessageContainerView" destination="Wpk-Sl-jop" id="zXI-zI-fRS"/>
                 <outlet property="avatarMessageViewContainerHeightConstraint" destination="zLV-s6-cEd" id="eLE-XB-n8x"/>
                 <outlet property="messageBubbleView" destination="MLd-nM-dHP" id="kAt-ec-t9T"/>
                 <outlet property="messageBubbleViewTopConstraint" destination="zaB-7x-tTh" id="aS7-i6-dYj"/>
@@ -27,11 +29,11 @@
                             <rect key="frame" x="156.66666666666663" y="0.0" width="200" height="200"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="200" id="EWk-29-I16"/>
+                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="EWk-29-I16"/>
                                 <constraint firstAttribute="width" constant="200" id="UU5-Wp-mff"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="avatar-2"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="avatar-final"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="MLd-nM-dHP" customClass="MessageBubbleView" customModule="lets_talk" customModuleProvider="target">
@@ -39,7 +41,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="Up8-NA-MiM" firstAttribute="top" secondItem="Wpk-Sl-jop" secondAttribute="top" id="1DO-yM-ulu"/>
                         <constraint firstAttribute="trailing" secondItem="MLd-nM-dHP" secondAttribute="trailing" constant="10" id="HDj-Zk-v0T"/>
@@ -67,4 +69,9 @@
             <size key="intrinsicContentSize" width="200" height="200"/>
         </designable>
     </designables>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

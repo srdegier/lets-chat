@@ -13,8 +13,8 @@ class SolutionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Solutions"
+        self.navigationItem.largeTitleDisplayMode = .always
         print("SolutionViewController")
-
     }
     
 }
