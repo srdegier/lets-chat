@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPF-Wj-6Ej">
-                    <rect key="frame" x="10" y="10" width="458" height="76"/>
+                    <rect key="frame" x="10" y="10" width="458" height="66"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Q3U-rn-FjL">
-                            <rect key="frame" x="5" y="5" width="403.33333333333331" height="66"/>
+                            <rect key="frame" x="5" y="5" width="403.33333333333331" height="56"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="68" id="efp-MC-oia"/>
@@ -35,16 +35,17 @@
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type a message" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIA-oe-jjk">
-                            <rect key="frame" x="10" y="0.0" width="448" height="76"/>
+                            <rect key="frame" x="10" y="0.0" width="448" height="66"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-Ox-BJM">
-                            <rect key="frame" x="408.33333333333331" y="36.666666666666657" width="49.666666666666686" height="34.333333333333343"/>
+                            <rect key="frame" x="408.33333333333331" y="26.666666666666661" width="49.666666666666686" height="34.333333333333343"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="49.666666666666686" id="RkT-y8-FsW"/>
                             </constraints>
+                            <color key="tintColor" systemColor="systemTealColor"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="arrow.up.circle.fill" catalog="system"/>
                             <connections>
@@ -73,7 +74,7 @@
                 <constraint firstAttribute="trailing" secondItem="bPF-Wj-6Ej" secondAttribute="trailing" constant="10" id="3YR-DO-dyv"/>
                 <constraint firstItem="bPF-Wj-6Ej" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="BNM-JG-Hs7"/>
                 <constraint firstItem="bPF-Wj-6Ej" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Xxy-LI-AVc"/>
-                <constraint firstAttribute="bottom" secondItem="bPF-Wj-6Ej" secondAttribute="bottom" constant="10" id="ZTr-d7-k0j"/>
+                <constraint firstAttribute="bottom" secondItem="bPF-Wj-6Ej" secondAttribute="bottom" constant="20" id="ZTr-d7-k0j"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="190.83969465648855" y="-85.211267605633807"/>
@@ -86,6 +87,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

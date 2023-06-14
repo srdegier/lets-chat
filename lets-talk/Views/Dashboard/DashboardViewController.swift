@@ -30,6 +30,7 @@ class DashboardViewController: UIViewController {
         self.dashboardCollectionView.delegate = self
         self.dashboardCollectionView.dataSource = self
         
+        self.avatarMessageView.roundedCorners = [.bottomLeft, .bottomRight]
         self.avatarMessageView.messageBubbleView.messageType = .receiver
         self.avatarMessageView.avatarMessageText = self.viewModel.avatarMessage
         

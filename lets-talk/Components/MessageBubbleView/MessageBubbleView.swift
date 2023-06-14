@@ -115,7 +115,8 @@ class MessageBubbleView: UIView {
         switch self.messageType {
         case .receiver:
             self.changeImage("chat_bubble_received")
-            self.chatBubbleImage.tintColor = .systemGray4
+            self.messageTextLabel.textColor = .white
+            self.chatBubbleImage.tintColor = .systemTeal
             if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
                 self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .equal)
                 self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .greaterThanOrEqual)
@@ -123,8 +124,9 @@ class MessageBubbleView: UIView {
             }
         case .sender:
             self.changeImage("chat_bubble_sent")
-            self.chatBubbleImage.tintColor = .systemBlue
+            self.chatBubbleImage.tintColor = .systemMint
             self.messageTextLabel.textColor = .white
+            
             if let textBubbleViewLeadingConstraint = self.textBubbleViewLeadingConstraint, let textBubbleViewTrailingConstraint = self.textBubbleViewTrailingConstraint {
                 self.updateViewConstraint(textBubbleViewTrailingConstraint, relation: .equal)
                 self.updateViewConstraint(textBubbleViewLeadingConstraint, relation: .greaterThanOrEqual)

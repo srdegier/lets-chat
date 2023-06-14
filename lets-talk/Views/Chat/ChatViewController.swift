@@ -39,13 +39,13 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
         
         self.avatarMessageView.messageBubbleView.messageType = .receiver
         self.avatarMessageView.avatarMessageText = self.viewModel.initialMessage
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.avatarMessageView.revealAnimation()
-        self.avatarMessageView.slideAvatarViewAnimation() {
-            self.avatarMessageView.revealMessageAnimation()
+        self.avatarMessageView.revealAnimation() {
+            self.avatarMessageView.slideAvatarViewAnimation() {
+                self.avatarMessageView.revealMessageAnimation()
+            }
         }
     }
     
@@ -86,7 +86,7 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
                     self.avatarMessageView.avatarMessageText = self.viewModel.respondMessage
                 }
 
-                self.avatarMessageView.changeAnimation(fileName: "avatar-2")
+                self.avatarMessageView.changeAnimation(fileName: "avatar")
                 self.avatarMessageView.slideAvatarViewAnimation() {
                     self.avatarMessageView.revealMessageAnimation()
                 }

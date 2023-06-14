@@ -15,8 +15,13 @@ class HistorySettingsViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = "Chat History" // change this dynamicly
         self.navigationItem.largeTitleDisplayMode = .always
+        
+        self.contextView.layer.cornerRadius = 20;
+        self.contextView.layer.masksToBounds = true
+        
     }
     
+    @IBOutlet weak var contextView: UIView!
     @IBAction func didTapDeleteButton(_ sender: Any) {
         let alert = UIAlertController(title: "Deleting chat history",
                                       message: "Are you sure you want to delete your chat history?",

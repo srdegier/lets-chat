@@ -39,6 +39,8 @@
 		8759D5FD29F6B62600E828AB /* MessageBubbleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8759D5FC29F6B62600E828AB /* MessageBubbleView.xib */; };
 		875A6BDA2A081FD100E722A4 /* ChatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875A6BD92A081FD100E722A4 /* ChatInputView.swift */; };
 		875A6BDC2A0820A200E722A4 /* ChatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 875A6BDB2A0820A200E722A4 /* ChatInputView.xib */; };
+		8760EECC2A3A04AE00AF844D /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760EECB2A3A04AE00AF844D /* UIView+Border.swift */; };
+		8760EECE2A3A2BCA00AF844D /* UIView+Rounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8760EECD2A3A2BCA00AF844D /* UIView+Rounded.swift */; };
 		877AB0DB2A23AC55000F6201 /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877AB0DA2A23AC55000F6201 /* OpenAIService.swift */; };
 		877AB0E72A24BDF4000F6201 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877AB0E62A24BDF4000F6201 /* Config.swift */; };
 		877AB5932A1556A9002B21D7 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 877AB5922A1556A9002B21D7 /* ChatView.xib */; };
@@ -109,6 +111,8 @@
 		8759D5FC29F6B62600E828AB /* MessageBubbleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageBubbleView.xib; sourceTree = "<group>"; };
 		875A6BD92A081FD100E722A4 /* ChatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputView.swift; sourceTree = "<group>"; };
 		875A6BDB2A0820A200E722A4 /* ChatInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatInputView.xib; sourceTree = "<group>"; };
+		8760EECB2A3A04AE00AF844D /* UIView+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
+		8760EECD2A3A2BCA00AF844D /* UIView+Rounded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Rounded.swift"; sourceTree = "<group>"; };
 		877AB0DA2A23AC55000F6201 /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		877AB0E62A24BDF4000F6201 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		877AB5922A1556A9002B21D7 /* ChatView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 			children = (
 				873C230A2A3615EE004F6B56 /* String+capitalizedSentece.swift */,
 				873C23172A39E612004F6B56 /* UIView+Shadow.swift */,
+				8760EECB2A3A04AE00AF844D /* UIView+Border.swift */,
+				8760EECD2A3A2BCA00AF844D /* UIView+Rounded.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -608,12 +614,14 @@
 				877AB5B22A1BE6B6002B21D7 /* ChatDelegateProtocol.swift in Sources */,
 				879068202A01604B008A7E6F /* AvatarMessageView.swift in Sources */,
 				877AB5AE2A1A93B7002B21D7 /* ChatDataSource.swift in Sources */,
+				8760EECE2A3A2BCA00AF844D /* UIView+Rounded.swift in Sources */,
 				877AB5A52A17FE6A002B21D7 /* ChatViewModel.swift in Sources */,
 				875A6BDA2A081FD100E722A4 /* ChatInputView.swift in Sources */,
 				873C22F62A2E82C9004F6B56 /* BuddySettingsViewController.swift in Sources */,
 				873C22E92A2CDC35004F6B56 /* DashboardComponentOption.swift in Sources */,
 				877AB5B42A1BE749002B21D7 /* ChatDelegate.swift in Sources */,
 				873C22E72A2CC939004F6B56 /* SettingOption.swift in Sources */,
+				8760EECC2A3A04AE00AF844D /* UIView+Border.swift in Sources */,
 				8750C39F29F5BBD3002DE176 /* ChatViewController.swift in Sources */,
 				87D9551129F2E83E0054FF4A /* ViewControllerFactory.swift in Sources */,
 				87D2124B29F0177A0035AF04 /* AppDelegate.swift in Sources */,
@@ -775,7 +783,7 @@
 				DEVELOPMENT_TEAM = VX8CYT528Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lets-talk/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Let's Talk";
+				INFOPLIST_KEY_CFBundleDisplayName = "Let's Chat";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -805,7 +813,7 @@
 				DEVELOPMENT_TEAM = VX8CYT528Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "lets-talk/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "Let's Talk";
+				INFOPLIST_KEY_CFBundleDisplayName = "Let's Chat";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

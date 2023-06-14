@@ -80,9 +80,19 @@ class ChatView: UIView {
             fatalError("chatCollectionViewDelegate is not set.")
         }
         self.chatCollectionView.scrollToBottom(withoutDelay: true)
+        self.updateMaskedCorners()
     }
     
     // MARK: Methods
+    
+    private func updateMaskedCorners() {
+        let maskPath = UIBezierPath(roundedRect: self.chatInputView.bounds,
+                                    byRoundingCorners: [.topLeft, .topRight],
+                                    cornerRadii: CGSize(width: 30.0, height: 30.0))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = maskPath.cgPath
+        self.chatInputView.layer.mask = maskLayer
+    }
     
     public func addNewMessageToChat() {
         // Bepaal de index van het nieuwe bericht in de gegevensbron

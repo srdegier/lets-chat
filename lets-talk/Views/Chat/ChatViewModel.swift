@@ -63,13 +63,13 @@ class ChatViewModel {
         }
     }
     
-//    private var systemMessage: String {
-//        return "Act as a real friend which try to understand and has empathy You wil not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: \(self.buddyName) Their name is: \(self.profileName) Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
-//    }
-
     private var systemMessage: String {
-        return "Act as a real friend which is \(self.buddyPersonality) and \(self.buddyPersonalityOptional). You will not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: \(self.buddyName). Their name is: \(self.profileName). Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
+        return "Act as a real friend which try to understand and has empathy You wil not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Also ask often 'why' somthing is wrong. Your name is: \(self.buddyName) Their name is: \(self.profileName) Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
     }
+
+//    private var systemMessage: String {
+//        return "Act as a real friend which is \(self.buddyPersonality) and \(self.buddyPersonalityOptional). You will not give specific instructions. Your main goal is not to give a straight answer but rather to comfort your friend. Your name is: \(self.buddyName). Their name is: \(self.profileName). Your language is ONLY: \(self.buddyLanguage). Max words in your response: 60. Use sometimes emoji's"
+//    }
     public var initialMessage: String {
         return "Hello \(self.profileName), how are your doing today?"
     }

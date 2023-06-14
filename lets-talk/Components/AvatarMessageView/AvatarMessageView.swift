@@ -19,7 +19,7 @@ class AvatarMessageView: UIView {
     @IBOutlet weak var messageBubbleViewTopConstraint: NSLayoutConstraint!
     
     
-    public var roundedCorners: UIRectCorner = [.bottomLeft, .bottomRight] {
+    public var roundedCorners: UIRectCorner = [] {
         didSet {
             self.updateMaskedCorners()
         }
