@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="height" constant="350" id="Mu2-WO-7ak"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="bottom-animation"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="bottom-animation-final"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OSa-Um-0N6">

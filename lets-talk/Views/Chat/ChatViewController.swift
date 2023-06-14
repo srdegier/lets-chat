@@ -86,11 +86,11 @@ class ChatViewController: UIViewController, ChatInputViewDelegate {
                     self.avatarMessageView.avatarMessageText = self.viewModel.respondMessage
                 }
 
-                self.avatarMessageView.changeAnimation(fileName: "avatar")
+                self.avatarMessageView.changeAnimation(fileName: "avatar-final")
                 self.avatarMessageView.slideAvatarViewAnimation() {
                     self.avatarMessageView.revealMessageAnimation()
+                    self.chatView.chatInputView.sendButtonisEnabled = true
                 }
-                self.chatView.chatInputView.sendButtonisEnabled = true
             }
         }
 

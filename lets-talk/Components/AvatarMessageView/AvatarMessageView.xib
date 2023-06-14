@@ -33,7 +33,7 @@
                                 <constraint firstAttribute="width" constant="200" id="UU5-Wp-mff"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="avatar"/>
+                                <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="avatar-final"/>
                             </userDefinedRuntimeAttributes>
                         </view>
                         <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="MLd-nM-dHP" customClass="MessageBubbleView" customModule="lets_talk" customModuleProvider="target">
