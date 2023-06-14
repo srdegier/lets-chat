@@ -37,7 +37,7 @@ class SettingTableViewCell: UITableViewCell {
             HapticFeedbackManager.shared.performImpactFeedback(style: .medium)
             self.backgroundColor = UIColor.secondarySystemFill
         } else {
-            self.backgroundColor = UIColor.secondarySystemBackground
+            self.backgroundColor = UIColor.systemBackground
         }
     }
     
