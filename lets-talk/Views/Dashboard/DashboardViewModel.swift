@@ -43,8 +43,8 @@ class DashboardViewModel {
     // MARK: - Data Source
     private var dashboardComponentOptions: [DashboardComponentOption] {
         return [
-            DashboardComponentOption(title: "Chat 💬", viewControllerType: .chat),
-            DashboardComponentOption(title: "Solutions 💡", viewControllerType: .solutions)
+            DashboardComponentOption(title: "Chat", viewControllerType: .chat, imageSource: "typing-2", contentMode: .scaleAspectFit),
+            DashboardComponentOption(title: "Settings", viewControllerType: .settings, imageSource: "settings", contentMode: .scaleAspectFit)
         ]
     }
     

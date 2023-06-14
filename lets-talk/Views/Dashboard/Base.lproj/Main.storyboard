@@ -17,13 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="G8T-bD-tiq" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="146" width="375" height="128"/>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Prq-4z-u6J">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="146"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="G8T-bD-tiq" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="146" width="375" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OSa-Um-0N6">
-                                <rect key="frame" x="0.0" y="274" width="375" height="504"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="304" width="375" height="474"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" sectionInsetReference="layoutMargins" id="Jl2-Rn-pd0">
                                     <size key="itemSize" width="324" height="107"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -44,46 +48,72 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greaterthan" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MA4-Ab-XIQ">
-                                                    <rect key="frame" x="280.33333333333331" y="47" width="15.666666666666686" height="13.333333333333336"/>
-                                                    <color key="tintColor" systemColor="secondaryLabelColor"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="ViO-V2-vyK" customClass="LottieAnimationView" customModule="Lottie">
+                                                    <rect key="frame" x="174" y="0.0" width="150" height="107"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="66e-qm-ILe"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="typing-2"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstItem="MA4-Ab-XIQ" firstAttribute="centerY" secondItem="g2m-gZ-LaA" secondAttribute="centerY" id="B1P-tg-7lo"/>
+                                                <constraint firstAttribute="trailing" secondItem="ViO-V2-vyK" secondAttribute="trailing" id="059-3M-ceX"/>
                                                 <constraint firstItem="G7p-cv-QTm" firstAttribute="top" secondItem="g2m-gZ-LaA" secondAttribute="top" constant="10" id="GO7-E2-k0A"/>
-                                                <constraint firstAttribute="trailing" secondItem="MA4-Ab-XIQ" secondAttribute="trailing" constant="28" id="VSJ-lp-srF"/>
-                                                <constraint firstItem="MA4-Ab-XIQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G7p-cv-QTm" secondAttribute="trailing" id="lr7-yq-NMJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="ViO-V2-vyK" secondAttribute="bottom" id="fmm-F5-A0d"/>
+                                                <constraint firstItem="ViO-V2-vyK" firstAttribute="top" secondItem="g2m-gZ-LaA" secondAttribute="top" id="gxx-zt-d66"/>
+                                                <constraint firstItem="ViO-V2-vyK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="G7p-cv-QTm" secondAttribute="trailing" constant="8" symbolic="YES" id="mHo-8T-xih"/>
                                                 <constraint firstItem="G7p-cv-QTm" firstAttribute="leading" secondItem="g2m-gZ-LaA" secondAttribute="leading" constant="15" id="vbt-RZ-RgQ"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="324" height="107"/>
                                         <connections>
+                                            <outlet property="navigationAnimationView" destination="ViO-V2-vyK" id="1gg-Mi-azG"/>
                                             <outlet property="navigationTitleLabel" destination="G7p-cv-QTm" id="SRU-eJ-ePg"/>
                                             <outlet property="navigationViewCell" destination="g2m-gZ-LaA" id="s8q-li-Bte"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="OfA-MT-skA" customClass="LottieAnimationView" customModule="Lottie">
+                                <rect key="frame" x="0.0" y="462" width="375" height="350"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="Mu2-WO-7ak"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="bottom-animation"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cpo-3W-bWg"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cpo-3W-bWg" firstAttribute="trailing" secondItem="Prq-4z-u6J" secondAttribute="trailing" id="0fz-oU-GwL"/>
+                            <constraint firstItem="Prq-4z-u6J" firstAttribute="top" secondItem="axL-Qw-Kda" secondAttribute="top" id="1EV-cf-lat"/>
                             <constraint firstItem="G8T-bD-tiq" firstAttribute="leading" secondItem="axL-Qw-Kda" secondAttribute="leading" id="8Ag-Tc-3l7"/>
+                            <constraint firstItem="OfA-MT-skA" firstAttribute="bottom" secondItem="axL-Qw-Kda" secondAttribute="bottom" id="9of-Al-LmF"/>
                             <constraint firstItem="OSa-Um-0N6" firstAttribute="leading" secondItem="axL-Qw-Kda" secondAttribute="leading" id="DpQ-IG-pit"/>
+                            <constraint firstItem="Prq-4z-u6J" firstAttribute="leading" secondItem="cpo-3W-bWg" secondAttribute="leading" id="HiY-m2-QQZ"/>
                             <constraint firstAttribute="trailing" secondItem="G8T-bD-tiq" secondAttribute="trailing" id="HqZ-3f-SzQ"/>
+                            <constraint firstAttribute="trailing" secondItem="OfA-MT-skA" secondAttribute="trailing" id="KE2-WS-dFT"/>
                             <constraint firstItem="G8T-bD-tiq" firstAttribute="top" secondItem="cpo-3W-bWg" secondAttribute="top" id="Vh6-ud-49A"/>
+                            <constraint firstItem="OfA-MT-skA" firstAttribute="leading" secondItem="axL-Qw-Kda" secondAttribute="leading" id="Zt4-L3-ayZ"/>
                             <constraint firstItem="cpo-3W-bWg" firstAttribute="bottom" secondItem="OSa-Um-0N6" secondAttribute="bottom" id="byY-LN-jzv"/>
+                            <constraint firstItem="G8T-bD-tiq" firstAttribute="top" secondItem="Prq-4z-u6J" secondAttribute="bottom" id="gaK-xC-gnU"/>
                             <constraint firstAttribute="trailing" secondItem="OSa-Um-0N6" secondAttribute="trailing" id="lMH-zN-zDy"/>
-                            <constraint firstItem="OSa-Um-0N6" firstAttribute="top" secondItem="G8T-bD-tiq" secondAttribute="bottom" id="nra-2B-KWg"/>
+                            <constraint firstItem="OSa-Um-0N6" firstAttribute="top" secondItem="G8T-bD-tiq" secondAttribute="bottom" constant="30" id="nra-2B-KWg"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="etR-ye-J2Z"/>
                     <connections>
                         <outlet property="avatarMessageView" destination="G8T-bD-tiq" id="qi4-fo-3nG"/>
+                        <outlet property="bottomAnimationView" destination="OfA-MT-skA" id="u9d-vo-bnj"/>
                         <outlet property="dashboardCollectionView" destination="OSa-Um-0N6" id="HdU-b4-cvs"/>
                     </connections>
                 </viewController>
@@ -111,10 +141,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="greaterthan" catalog="system" width="128" height="108"/>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
