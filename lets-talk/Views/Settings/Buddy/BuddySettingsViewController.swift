@@ -17,6 +17,7 @@ class BuddySettingsViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var formView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameErrorLabel: UILabel!
     
@@ -41,8 +42,12 @@ class BuddySettingsViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = saveButton
         self.saveButton.isEnabled = false
         
+        self.avatarMessageView.roundedCorners = [.bottomLeft, .bottomRight]
         self.avatarMessageView.messageBubbleView.messageType = .receiver;
         self.avatarMessageView.avatarMessageText = ""
+        
+        self.formView.layer.cornerRadius = 20;
+        self.formView.layer.masksToBounds = true;
         
         self.languagePickerView.tag = 1
         self.languagePickerView.delegate = self

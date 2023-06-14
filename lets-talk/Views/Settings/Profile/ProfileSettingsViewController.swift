@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileSettingsViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var contextView: UIView!
+    @IBOutlet weak var formView: UIView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var nameErrorLabel: UILabel!
     
@@ -27,6 +29,11 @@ class ProfileSettingsViewController: UIViewController, UITextFieldDelegate {
         self.saveButton = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
         self.navigationItem.rightBarButtonItem = saveButton
         self.saveButton.isEnabled = false
+        self.contextView.layer.cornerRadius = 20;
+        self.contextView.layer.masksToBounds = true
+        
+        self.formView.layer.cornerRadius = 20;
+        self.formView.layer.masksToBounds = true;
         
         self.nameTextField.delegate = self
         self.ageTextField.delegate = self

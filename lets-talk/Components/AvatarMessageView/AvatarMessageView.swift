@@ -11,11 +11,19 @@ import Lottie
 
 class AvatarMessageView: UIView {
     
+    @IBOutlet weak var avatarMessageContainerView: UIView!
     @IBOutlet weak var avatarAnimationViewXConstraint: NSLayoutConstraint!
     @IBOutlet weak var avatarMessageViewContainerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var avatarAnimationView: LottieAnimationView!
     @IBOutlet weak var messageBubbleView: MessageBubbleView!
     @IBOutlet weak var messageBubbleViewTopConstraint: NSLayoutConstraint!
+    
+    
+    public var roundedCorners: UIRectCorner = [] {
+        didSet {
+            self.updateMaskedCorners()
+        }
+    }
     
     private var _avatarMessageText: String?
     
@@ -30,6 +38,11 @@ class AvatarMessageView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        self.updateMaskedCorners()
     }
     
     private func loadViewFromNib() -> UIView {
@@ -50,20 +63,30 @@ class AvatarMessageView: UIView {
         self.messageBubbleView.isTailFlipped = true
     }
     
+    private func updateMaskedCorners() {
+        let maskPath = UIBezierPath(roundedRect: self.avatarMessageContainerView.bounds,
+                                    byRoundingCorners: roundedCorners,
+                                    cornerRadii: CGSize(width: 60.0, height: 60.0))
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = maskPath.cgPath
+        self.avatarMessageContainerView.layer.mask = maskLayer
+    }
+    
     // MARK: Animations
     
     public func revealAnimation(completion: (() -> Void)? = nil) -> Void {
         UIView.animate(withDuration: 1.0, animations: {
             self.avatarMessageViewContainerHeightConstraint.constant = 200
-            self.avatarAnimationView.alpha = 1
             self.contentMode = .top
             self.superview?.layoutIfNeeded()
         }) { (_) in
-            self.avatarAnimationView.loopMode = .loop
-            self.avatarAnimationView.play()
-            completion?()
+            UIView.animate(withDuration: 1.0) {
+                self.avatarAnimationView.alpha = 1
+                self.avatarAnimationView.loopMode = .loop
+                self.avatarAnimationView.play()
+                completion?()
+            }
         }
-        
     }
     
     public func hideAnimation(completion: (() -> Void)? = nil) -> Void {

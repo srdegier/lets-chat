@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Lottie
 
 class DashboardViewController: UIViewController {
 
     @IBOutlet weak var avatarMessageView: AvatarMessageView!
     @IBOutlet weak var dashboardCollectionView: UICollectionView!
     
+    @IBOutlet weak var bottomAnimationView: LottieAnimationView!
     // MARK: - Properties
     
     var viewModel = DashboardViewModel()
@@ -23,13 +25,18 @@ class DashboardViewController: UIViewController {
         self.navigationItem.title = "Let's Chat"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.backButtonTitle = "Back"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettingsButton))
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTapSettingsButton))
 
         self.dashboardCollectionView.delegate = self
         self.dashboardCollectionView.dataSource = self
         
+        self.avatarMessageView.roundedCorners = [.bottomLeft, .bottomRight]
         self.avatarMessageView.messageBubbleView.messageType = .receiver
         self.avatarMessageView.avatarMessageText = self.viewModel.avatarMessage
+        
+        self.bottomAnimationView.contentMode = .scaleAspectFill
+        self.bottomAnimationView.loopMode = .loop
+        self.bottomAnimationView.play()
 
     }
     
@@ -53,11 +60,11 @@ class DashboardViewController: UIViewController {
     private func updateView() {
         self.avatarMessageView.avatarMessageText = self.viewModel.avatarMessage
     }
-        
-    @objc func didTapSettingsButton() {
-        guard let vc = ViewControllerFactory.settingsViewController() else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
+//        
+//    @objc func didTapSettingsButton() {
+//        guard let vc = ViewControllerFactory.settingsViewController() else { return }
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
 
 }
 
@@ -71,7 +78,7 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = dashboardCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? NavigationCollectionViewCell
-        cell?.navigationTitleLabel.text = viewModel.dashboardComponentOptionForIndexPath(indexPath)?.title
+        cell?.configure(with: viewModel.dashboardComponentOptionForIndexPath(indexPath)!.title, imageSource: viewModel.dashboardComponentOptionForIndexPath(indexPath)!.imageSource, contentMode: viewModel.dashboardComponentOptionForIndexPath(indexPath)!.contentMode)
         return cell!
     }
     

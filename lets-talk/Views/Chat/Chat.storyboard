@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,25 +16,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Uwe-cL-OGa" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="50" width="375" height="128"/>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="TLx-bA-TAL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rCq-rx-o6M"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="Uwe-cL-OGa" customClass="AvatarMessageView" customModule="lets_talk" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="90" width="375" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="375" placeholderIntrinsicHeight="634" translatesAutoresizingMaskIntoConstraints="NO" id="gSQ-X4-RhS" customClass="ChatView" customModule="lets_talk" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="178" width="375" height="634"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="218" width="375" height="594"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VOe-nD-tdB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="TLx-bA-TAL" firstAttribute="leading" secondItem="iGX-jd-eGz" secondAttribute="leading" id="72U-Fc-fhp"/>
                             <constraint firstItem="gSQ-X4-RhS" firstAttribute="top" secondItem="Uwe-cL-OGa" secondAttribute="bottom" id="Cv7-Af-Jjn"/>
                             <constraint firstItem="gSQ-X4-RhS" firstAttribute="leading" secondItem="VOe-nD-tdB" secondAttribute="leading" id="LNQ-jM-sMM"/>
                             <constraint firstItem="VOe-nD-tdB" firstAttribute="trailing" secondItem="gSQ-X4-RhS" secondAttribute="trailing" id="Uca-aK-X01"/>
                             <constraint firstItem="VOe-nD-tdB" firstAttribute="trailing" secondItem="Uwe-cL-OGa" secondAttribute="trailing" id="YGa-UQ-R61"/>
                             <constraint firstAttribute="bottom" secondItem="gSQ-X4-RhS" secondAttribute="bottom" id="hoK-Fv-SEG"/>
+                            <constraint firstItem="TLx-bA-TAL" firstAttribute="top" secondItem="iGX-jd-eGz" secondAttribute="top" id="hzi-et-2gx"/>
                             <constraint firstItem="Uwe-cL-OGa" firstAttribute="leading" secondItem="VOe-nD-tdB" secondAttribute="leading" id="jSP-Su-v3A"/>
-                            <constraint firstItem="Uwe-cL-OGa" firstAttribute="top" secondItem="VOe-nD-tdB" secondAttribute="top" id="ut1-Ao-uOB"/>
+                            <constraint firstItem="Uwe-cL-OGa" firstAttribute="top" secondItem="TLx-bA-TAL" secondAttribute="bottom" constant="40" id="sAs-pb-DJ5"/>
+                            <constraint firstAttribute="trailing" secondItem="TLx-bA-TAL" secondAttribute="trailing" id="vKB-zo-8ax"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -50,6 +60,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
