@@ -1,6 +1,7 @@
 # Let's Chat
 
 What if there was a way to deal with stress that was only a chat away, and help was always available? “Let’s Chat” is an iOS chat app that connects users with a friendly, supportive AI chatbot. This chatbot offers understanding, empathy and useful advice for managing stress right on their device.
+
 Many people across the world face stress, leading to different mental and physical health problems. Talking about these problems can be difficult for some, impossible for others because of factors like stigma, lack of support, and fear of burdening others. This problem needs to be solved in an accessible way for different needs, providing users with a supportive environment where they feel comfortable sharing their concerns. 
 
 My solution is “Let’s Chat”, an iOS app connecting users with an AI buddy using GPT-3 technology to provide personalized conversations that help users understand and manage their stress. By offering empathy, understanding and practical advice, the AI buddy creates a safe environment for users to share their stress and experiences.
